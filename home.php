@@ -208,7 +208,7 @@
 			
 			<?php 
 				
-				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='feature' ORDER BY product_id DESC") or die (mysqli_error());
+				$query = mysqli_query($conn, "SELECT *FROM product  ORDER BY product_id DESC") or die (mysqli_error());
 				
 					while($fetch = mysqli_fetch_array($query))
 						{
