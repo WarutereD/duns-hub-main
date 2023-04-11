@@ -119,7 +119,7 @@
 			
 			<?php 
 				
-				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='accessories' ORDER BY product_id DESC") or die (mysqli_error());
+				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='full_pc' ORDER BY product_id DESC") or die (mysqli_error());
 				
 					while($fetch = mysqli_fetch_array($query))
 						{
