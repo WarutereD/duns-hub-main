@@ -87,7 +87,7 @@
 				<ul>
 					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Full Pc</a></li>
 					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & pieces</a></li>
-					<li><a href="admin_football.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
+					<li><a href="accessories.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
 				</ul>
 			</li>
 			<li><a href="transaction.php">Transactions</a></li>
@@ -131,7 +131,7 @@
 								<td><input type="number" name="qty" placeholder="No. of Stock" style="width:250px;" required></td>
 							</tr>
 							<tr>
-								<td><input type="hidden" name="category" value="feature"></td>
+								<td><input type="hidden" name="category" value="full_pc"></td>
 							</tr>
 						</table>
 					</center>
@@ -188,7 +188,7 @@
 			
 	
 	<div id="rightcontent" style="position:absolute; top:10%;">
-			<div class="alert alert-info"><center><h2>Features</h2></center></div>
+			<div class="alert alert-info"><center><h2>Pc Builds & Consoles</h2></center></div>
 			<br />
 				<label  style="padding:5px; float:right;"><input type="text" name="filter" placeholder="Search Product here..." id="filter"></label>
 			<br />
@@ -208,7 +208,7 @@
 				<tbody>
 				<?php
 					
-					$query = mysqli_query($conn, "SELECT * FROM `product` WHERE category='feature' ORDER BY product_id DESC") or die(mysqli_error());
+					$query = mysqli_query($conn, "SELECT * FROM `product` WHERE category='full_pc' ORDER BY product_id DESC") or die(mysqli_error());
 					while($fetch = mysqli_fetch_array($query))
 						{
 						$id = $fetch['product_id'];

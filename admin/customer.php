@@ -6,6 +6,7 @@
 <html>
 <head>
 	<title>Duns-hub</title>
+	<link rel="icon" href="../images/hubicon2.png" />
 	<link rel = "stylesheet" type = "text/css" href="../css/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	<script src="../js/bootstrap.js"></script>
@@ -26,8 +27,8 @@
 </head>
 <body>
 	<div id="header" style="position:fixed;">
-		<img src="../img/logo.jpg">
-		<label>alphaware</label>
+		<img src="../images/hubicon2.png">
+		<label>Duns-hub</label>
 		
 			<?php
 				$id = (int) $_SESSION['id'];
@@ -51,7 +52,7 @@
 				<ul>
 					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Features</a></li>
 					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & pieces</a></li>
-					<li><a href="admin_football.php" style="font-size:15px; margin-left:15px;">Football</a></li>
+					<li><a href="accessories.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>
 					<li><a href="admin_running.php"style="font-size:15px; margin-left:15px;">Running</a></li>
 				</ul>
 			</li>
@@ -75,9 +76,9 @@
 					<th>Name</th>
 					<th>Address</th>
 					<th>Province</th>
-					<th>Zipcode</th>
+					
 					<th>Mobile</th>
-					<th>Telephone</th>
+					
 					<th>Email</th>
 				</tr>
 				</thead>
@@ -90,9 +91,9 @@
 					<td><?php echo $fetch['firstname'];?>&nbsp;<?php echo $fetch['mi'];?>&nbsp;<?php echo  $fetch['lastname'];?></td>
 					<td><?php echo $fetch['address']?></td>
 					<td><?php echo $fetch['country']?></td>
-					<td><?php echo $fetch['zipcode']?></td>
+					
 					<td><?php echo $fetch['mobile']?></td>
-					<td><?php echo $fetch['telephone']?></td>
+					
 					<td><?php echo $fetch['email']?></td>
 				</tr>		
 				<?php

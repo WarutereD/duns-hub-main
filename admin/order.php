@@ -173,7 +173,7 @@
 				<ul>
 					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Full Pc</a></li>
 					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & Pieces</a></li>
-					<li><a href="admin_football.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
+					<li><a href="accessories.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
 				</ul>
 			</li>
 			<li><a href="transaction.php">Transactions</a></li>

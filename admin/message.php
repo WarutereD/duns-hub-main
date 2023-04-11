@@ -6,6 +6,7 @@
 <html>
 <head>
 	<title>Duns-hub</title>
+	<link rel="icon" href="../images/hubicon2.png" />
 	<link rel = "stylesheet" type = "text/css" href="../css/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	<script src="../js/bootstrap.js"></script>
@@ -26,7 +27,7 @@
 </head>
 <body>
 	<div id="header" style="position:fixed;">
-		<img src="../img/logo.jpg">
+	<link rel="icon" href="../images/hubicon2.png" />
 		<label>Duns-hub</label>
 		
 			<?php
@@ -51,7 +52,7 @@
 				<ul>
 					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Full Pc</a></li>
 					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & Pieces</a></li>
-					<li><a href="admin_football.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
+					<li><a href="accessories.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
 				</ul>
 			</li>
 			<li><a href="transaction.php">Transactions</a></li>

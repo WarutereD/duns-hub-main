@@ -6,6 +6,7 @@
 <html>
 <head>
 	<title>Duns-hub</title>
+	<link rel="icon" href="images/hubicon2.png"/>
 	<link rel = "stylesheet" type = "text/css" href="css/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<script src="js/bootstrap.js"></script>
@@ -25,11 +26,11 @@
 </head>
 <body>
 	<div id="header">
-		<img src="img/logo.png">
+		<img src="images/duns-hubicon.png">
 		<label>Duns-hub</label>
 		
 			<?php
-				$id = (int) $_SESSION['id'];
+				$id = (int) $_SESSION['customerid'];
 			
 					$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
 					$fetch = mysqli_fetch_array ($query);
@@ -48,7 +49,7 @@
 				</div>
 					<div class="modal-body">
 						<?php
-							$id = (int) $_SESSION['id'];
+							$id = (int) $_SESSION['customerid'];
 			
 								$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
 								$fetch = mysqli_fetch_array ($query);
@@ -67,13 +68,7 @@
 									<td class="profile">Country:</td><td class="profile"><?php echo $fetch['country'];?></td>
 								</tr>
 								<tr>
-									<td class="profile">ZIP Code:</td><td class="profile"><?php echo $fetch['zipcode'];?></td>
-								</tr>
-								<tr>
 									<td class="profile">Mobile Number:</td><td class="profile"><?php echo $fetch['mobile'];?></td>
-								</tr>
-								<tr>
-									<td class="profile">Telephone Number:</td><td class="profile"><?php echo $fetch['telephone'];?></td>
 								</tr>
 								<tr>
 									<td class="profile">Email:</td><td class="profile"><?php echo $fetch['email'];?></td>
@@ -107,9 +102,11 @@
 		<div class="nav1">
 
 			<ul>
-				<li><a href="product1.php" class="active" style="color:#111;">Gas cylinders</a></li>
+				<li><a href="full_pc.php">Pc Builds</a></li>
 				<li>|</li>
-				<li><a href="football1.php">Accessories</a></li>
+				<li><a href="product1.php" class="active" style="color:#111;">Parts & Pieces</a></li>
+				<li>|</li>
+				<li><a href="accessories.php">Accessories</a></li>
 				<li>|</li>
 				
 			</ul>

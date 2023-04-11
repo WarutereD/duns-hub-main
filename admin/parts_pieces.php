@@ -92,7 +92,7 @@
 								<td><input type="number" name="qty" placeholder="No. of Stock" style="width:250px;" required></td>
 							</tr>
 							<tr>
-								<td><input type="hidden" name="category" value="gas cylinder"></td>
+								<td><input type="hidden" name="category" value="Parts_piecces"></td>
 							</tr>
 						</table>
 					</center>
@@ -140,7 +140,7 @@
 				
 				$q2 = mysqli_query($conn, "INSERT INTO stock ( product_id, qty) VALUES ('$product_code','$qty')");
 				
-				header ("location:admin_product.php");
+				header ("location:parts_pieces.php");
 			}}
 		}
 
@@ -153,7 +153,7 @@
 				<ul>
 					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Full Pc</a></li>
 					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & pieces</a></li>
-					<li><a href="admin_football.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
+					<li><a href="accessories.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
 				</ul>
 			</li>
 			<li><a href="transaction.php">Transactions</a></li>
@@ -164,7 +164,7 @@
 	</div>
 	
 	<div id="rightcontent" style="position:absolute; top:10%;">
-			<div class="alert alert-danger"><center><h2>GAS CYLINDERS</h2></center></div>
+			<div class="alert alert-danger"><center><h2>Parts & Pieces</h2></center></div>
 			<br />
 				<label  style="padding:5px; float:right;"><input type="text" name="filter" placeholder="Search Product here..." id="filter"></label>
 			<br />
@@ -233,7 +233,7 @@
  
   $que = mysqli_query($conn, "UPDATE `stock` SET `qty` = '$total' WHERE `product_id`='$pid'") or die(mysqli_error());
   
-  header("Location:admin_product.php");
+  header("Location:parts_pieces.php");
  }
  
   /* stock out */
@@ -250,7 +250,7 @@
  
   $que = mysqli_query($conn, "UPDATE `stock` SET `qty` = '$total' WHERE `product_id`='$pid'") or die(mysqli_error());
   
-  header("Location:admin_product.php");
+  header("Location:parts_pieces.php");
  }
   ?>				
 			

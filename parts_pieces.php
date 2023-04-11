@@ -1,9 +1,7 @@
 <?php
 	include("function/session.php");
 	include("db/dbconn.php");
-	
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +26,6 @@
 </head>
 <body>
 	<div id="header">
-
 		<img src="images/duns-hubicon.png">
 		<label>Duns-hub</label>
 		
@@ -41,13 +38,13 @@
 	
 			<ul>
 				<li><a href="function/logout.php"><i class="icon-off icon-white"></i>logout</a></li>
-				<li>Welcome:&nbsp;&nbsp;&nbsp;<a href="#profile" href="" data-toggle="modal"><i class="icon-user icon-white"></i><?php echo $fetch['firstname']; ?>&nbsp;<?php echo $fetch['lastname'];?></a></li>
+				<li>Welcome:&nbsp;&nbsp;&nbsp;<a href="#profile" href  data-toggle="modal"><i class="icon-user icon-white"></i><?php echo $fetch['firstname']; ?>&nbsp;<?php echo $fetch['lastname'];?></a></li>
 			</ul>	
 	</div>
 	
 		<div id="profile" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:700px;">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
 					<h3 id="myModalLabel">My Account</h3>
 				</div>
 					<div class="modal-body">
@@ -94,121 +91,35 @@
 	<br>
 <div id="container">
 	
-	
-	
-
-	<div id="content">
-		<div class="nav">
+	<div class="nav">
 	
 			 <ul>
 				<li><a href="home.php"><i class="icon-home"></i>Home</a></li>
 				<li><a href="product1.php"><i class="icon-th-list"></i>Product</a>
-				<li><a href="aboutus.php"><i class="icon-bookmark"></i>About Us</a></li>
-				<li><a href="contactus.php"><i class="icon-inbox"></i>Contact Us</a></li>
+				<li><a href="aboutus1.php"><i class="icon-bookmark"></i>About Us</a></li>
+				<li><a href="contactus1.php"><i class="icon-inbox"></i>Contact Us</a></li>
+				
 			</ul>
 		</div>
 		
-		<div class="item-container">
- 		 <div class="item-wrapper">
-  			<div class="item-description">
-      			<h2>TheHub</h2>
-				<h3>Welcome</h3>
-      			<p>The Xbox Series X delivers sensationally smooth frame rates of up to 120FPS with the visual pop of HDR. Immerse yourself with sharper characters, brighter worlds and impossible details with true-to-life 4K.*</p>
-      			<p>Price: KSH100.00</p>
-    		</div>
-    		<div class="item-image">
-      			<img src="images/xbox.jpg" alt="Item Image">
-    		</div>
-  		 </div>
-  	 	 <div class="item-wrapper">
-			<div class="item-description">
-      			<h2>Item Name 2</h2>
-      			<p>Item Description 2 goes here...</p>
-      			<p>Price: KSH20.00</p>
-    		</div>
-    		<div class="item-image">
-      			<img src="images/mpesa.png" alt="Item Image">
-    		</div>
-  		 </div>
-  		<div class="item-wrapper">
-		  <div class="item-description">
-      			<h2>Item Name 3</h2>
-      			<p>Item Description 3 goes here...</p>
-      			<p>Price: KSH30.00</p>
-    		</div>
-    		<div class="item-image">
-      			<img src="images/mpesa.png" alt="Item Image">
-    		</div>
-  		</div>
-		<div class="item-arrow item-prev"><i class="fa fa-chevron-left"></i></div>
-    <div class="item-arrow item-next"><i class="fa fa-chevron-right"></i></div>
-</div>
-
-<style>
-  .item-container {
-    padding: 20px;
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .item-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  .item-image img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .item-description {
-    margin-left: 20px;
-    flex-grow: 1;
-  }
-
-  /* Hide all but the first item */
-  .item-wrapper:not(:first-of-type) {
-    display: none;
-  }
-</style>
-
-<script>
-  // Select all item wrappers
-  const items = document.querySelectorAll('.item-wrapper');
-  
-  // Set initial index
-  let currentItem = 0;
-  
-  // Set interval to switch items every 5 seconds
-  setInterval(() => {
-    // Hide current item
-    items[currentItem].style.display = 'none';
-    
-    // Increment index or reset to 0 if at the end
-    currentItem = currentItem === items.length - 1 ? 0 : currentItem + 1;
-    
-    // Show next item
-    items[currentItem].style.display = 'flex';
-  }, 10000);
-</script>
-
-
-
-		
+		<div class="nav1">
+			<ul>
+				<li><a href="product1.php">Parts & Pieces</a></li>
+				<li>|</li>
+				<li><a href="accessories.php" class="active" style="color:#111;">Accessories</a></li>
+				<li>|</li>				
+			</ul>
+				<a href="cart.php"><button class="btn btn-inverse" style="right:1%; position:fixed; top:10%;"><i class="icon-shopping-cart icon-white"></i> View Cart</button></a>
+		</div>
 	
-		
-
-		
-		<div id="product" style="position:relative; margin-top:30%;">
-			<center><h2><legend>Ensuring you get the best parts</legend></h2></center>
-			
+	<div id="content">
+		<br />
+		<br />
+		<div id="product">
 			
 			<?php 
 				
-				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='feature' ORDER BY product_id DESC") or die (mysqli_error());
+				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='accessories' ORDER BY product_id DESC") or die (mysqli_error());
 				
 					while($fetch = mysqli_fetch_array($query))
 						{
@@ -239,16 +150,27 @@
 		</div>
 		
 		
-	</div>
+		
 
-		</div>
-</br>
-</br>
+	</div>
+		
+	<br />
+</div>
+	<br />
 	<div id="footer">
 		<div class="foot">
-			<label style="font-size:17px;"> Copyright &copy; </label>
-			<p style="font-size:25px;">Duns-hub Inc. 2023</p>	    		
+			<label style="font-size:17px;"> Copyrght &copy; </label>
+			<p style="font-size:25px;">Duns-hub Inc. 2023</p>
+		</div>
 			
+			<div id="foot">
+				<h4>Links</h4>
+					<ul>
+						<a href="http://www.facebook.com/wamagas"><li>Facebook</li></a>
+						<a href="http://www.twitter.com/wamagas"><li>Twitter</li></a>
+						
+					</ul>
+			</div>
 	</div>
 </body>
 </html>

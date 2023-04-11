@@ -9,12 +9,20 @@ if (!function_exists('logged_in')) {
 
 if(!function_exists('confirm_logged_in')){
     function confirm_logged_in() {
-    if (!logged_in()) {
-        header("Location: login.php");
-        exit;
-     }
+    if(isset($_SESSION['customerid']) && !empty($_SESSION['customerid'])) {
+        // User is logged in
+        return true;
+    } else {
+        // User is not logged in
+        header('Location: login.php'); // Redirect to login page
+        exit();
     }
 }
+
+}
+
+
+
 ?>
 
 

@@ -1,6 +1,8 @@
 <?php 
+	include("function/session.php");
 	include("function/login.php");
 	include("function/customer_signup.php");
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,80 +27,28 @@
 	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div id="header">
-		<img src="images/duns-hubicon.png">
-		<label>Duns-hub</label>
-			<ul>
-				<li><a href="#signup"   data-toggle="modal">Sign Up</a></li>
-				<li><a href="#login"   data-toggle="modal">Login</a></li>
-			</ul>
-	</div>
-		<div id="login" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-				<h3 id="myModalLabel">Login...</h3>
-			</div>
-				<div class="modal-body">
-					<form method="post">
-					<center>
-						<input type="email" name="email" placeholder="Email" style="width:250px;">
-						<input type="password" name="password" placeholder="Password" style="width:250px;">
-					</center>
-				</div>
-			<div class="modal-footer">
-				<input class="btn btn-primary" type="submit" name="login" value="Login">
-				<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
-					</form>
-			</div>
-		</div>
+		<?php
+		if (confirm_logged_in()) {
+    		$id = (int) $_SESSION['customerid'];
+    		$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
+    		$fetch = mysqli_fetch_array ($query);
+		?>
+    		<div id="header">
+       		 	<img src="images/duns-hubicon.png">
+        		<label>Duns-hub</label>
+        		<ul>
+            		<li><a href="function/logout.php"><i class="icon-off icon-white"></i>logout</a></li>
+            		<li>Welcome:&nbsp;&nbsp;&nbsp;<a href="#profile" href="" data-toggle="modal"><i class="icon-user icon-white"></i><?php echo $fetch['firstname']; ?>&nbsp;<?php echo $fetch['lastname'];?></a></li>
+        		</ul>   
+    		</div>
+		<?php
+		}else{
+			?>
+		}
 		
-		<div id="login1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-				<h3 id="myModalLabel">Please login before purchasing...</h3>
-			</div>
-				<div class="modal-body">
-					<form method="post">
-					<center>
-						<input type="email" name="email" placeholder="Email" style="width:250px;">
-						<input type="password" name="password" placeholder="Password" style="width:250px;">
-					</center>
-				</div>
-			<div class="modal-footer">
-				<p style="float:left;">No account? <a href="#signup" data-toggle="modal">Sign up here!</a></p>
-				<input class="btn btn-primary" type="submit" name="login" value="Login">
-				<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
-					</form>
-			</div>
-		</div>
-	
-		<div id="signup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:700px;">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-					<h3 id="myModalLabel">Sign Up Here...</h3>
-				</div>
-					<div class="modal-body">
-						<center>
-					<form method="post">
-						<input type="text" name="firstname" placeholder="Firstname" required>
-						<input type="text" name="mi" placeholder="Middle Initial" maxlength="1" required>
-						<input type="text" name="lastname" placeholder="Lastname" required>
-						<input type="text" name="address" placeholder="Court Name" style=required>
-						<input type="text" name="country" placeholder="Province" required>
-						<input type="text" name="zipcode" placeholder="ZIP Code" required maxlength="4">
-						<input type="text" name="mobile" placeholder="Mobile Number" maxlength="11">
-						<input type="text" name="telephone" placeholder="Telephone Number" maxlength="8">
-						<input type="email" name="email" placeholder="Email" required>
-						<input type="password" name="password" placeholder="Password" required>
-						</center>
-					</div>
-				<div class="modal-footer">
-					<input type="submit" class="btn btn-primary" name="signup" value="Sign Up">
-					<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
-				</div>
-					</form>
-			</div>
+			
 	<br>
+
 <div id="container">
 	<div class="nav">
 	
@@ -175,5 +125,6 @@
 			<p style="font-size:25px;">Wamagas Inc. 2021</p>	    		
 			
 	</div>
+		
 </body>
 </html>

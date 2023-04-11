@@ -3,7 +3,7 @@
 	include("function/customer_signup.php");
 ?>
 <!DOCTYPE html>
-<html>
+<html>j
 <head>
 	<title>Wamagas</title>
 	<link rel="icon" href="img/logo.png" />

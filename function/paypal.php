@@ -1,13 +1,13 @@
 <?php
 	include('db/dbconn.php');
 	if (isset($_POST['pay_now'])){
-		$cid = $_SESSION['id'];
+		$cid = $_SESSION['customerid'];
 		$total = $_POST['total'];
 		
 		include ("random_code.php");
 		$t_id = $r_id;
 		$date = date("M d, Y");
-		$que = mysqli_query($conn, "INSERT INTO `transaction` (transaction_id, customerid, amount, order_stat, order_date) VALUES ('$t_id', '$cid', '$total', 'ON HOLD', '$date')") or die (mysqli_error());				
+		$que = mysqli_query($conn, "INSERT INTO `transaction` (transaction_id, customerid, amount, order_stat, order_date) VALUES ('$t_id', '$cid', '$total', 'ON HOLD', '$date')") or die(mysqli_error($conn));
 	
 		$p_id = $_POST['pid'];
 		$oqty = $_POST['qty'];

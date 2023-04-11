@@ -32,7 +32,7 @@
 		<label>Duns-hub</label>
 			
 			<?php
-				$id = (int) $_SESSION['id'];
+				$id = (int) $_SESSION['customerid'];
 			
 					$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
 					$fetch = mysqli_fetch_array ($query);
@@ -51,7 +51,7 @@
 				</div>
 					<div class="modal-body">
 						<?php
-							$id = (int) $_SESSION['id'];
+							$id = (int) $_SESSION['customerid'];
 			
 								$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
 								$fetch = mysqli_fetch_array ($query);
@@ -101,22 +101,26 @@
 				
 			</ul>
 	</div>
-		<?php 
-			if(isset($_GET['id'])){
-			$id = $_GET['id'];
-			$query = mysqli_query($conn, "SELECT * FROM product WHERE product_id = '$id' ");
-			$row = mysqli_fetch_array($query);
-		?>
-				<div>
-					<center>
-						<img class="img-polaroid" style="width:400px; height:350px;" src="photo/<?php echo $row['product_image']; ?>">
-						<h2 class="text-uppercase bg-primary"><?php echo $row['product_name']?></h2>
-						<h3 class="text-uppercase">KSH: <?php echo $row['product_price']?></h3>
-						<h3 class="text-uppercase">Description: <?php echo $row['product_size']?>!</h3>
-						<?php echo "<a href='cart.php?id=".$id."&action=add'><input type='submit' class='btn btn-inverse' name='add' value='Add to Cart'></a> &nbsp;  <a href='product1.php'><button class='btn btn-inverse'>Back</button></a> " ?>
-					</center>
-				</div>
-		<?php }?>
+	<?php 
+		if(isset($_GET['id'])){
+    		$id = $_GET['id'];
+  		    $query = mysqli_query($conn, "SELECT * FROM product WHERE product_id = '$id' ");
+    		$row = mysqli_fetch_array($query);
+	?>
+    	<div>
+        	<center>
+            	<img class="img-polaroid" style="width:400px; height:350px;" src="photo/<?php echo $row['product_image']; ?>">
+            	<h2 class="text-uppercase bg-primary"><?php echo $row['product_name']?></h2>
+            	<h3 class="text-uppercase">KSH: <?php echo $row['product_price']?></h3>
+            	<h3 class="text-uppercase">Description: <?php echo $row['product_size']?>!</h3>
+            	<a href='cart.php?id=<?php echo $id ?>&action=add' class='btn btn-inverse'>Add to Cart</a>
+            	<a href='product1.php' class='btn btn-inverse'>Back</a>
+        	</center>
+    	</div>
+	<?php 
+	}
+	?>
+
 		
 		<div id="purchase" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
 			<div class="modal-header">
