@@ -6,6 +6,7 @@
 <html>
 <head>
 	<title>Duns-hub</title>
+	<link rel="icon" href="../images/hubicon2.png" />
 	<link rel = "stylesheet" type = "text/css" href="../css/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	<script src="../js/bootstrap.js"></script>
@@ -55,7 +56,7 @@ $(function () {
             plotShadow: false
         },
         title: {
-            text: 'Products share of Gas Brands as of year <?php echo $date = date("Y"); ?>'
+            text: 'Products sold as of year <?php echo $date = date("Y"); ?>'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -145,8 +146,8 @@ $(function () {
 			<li><a href="admin_home.php" style="color:#333;">Dashboard</a></li>
 			<li><a href="admin_home.php">Products</a>
 				<ul>
-					<li><a href="admin_feature.php "style="font-size:15px; margin-left:15px;">Features</a></li>
-					<li><a href="admin_product.php "style="font-size:15px; margin-left:15px;">Gas cylinders</a></li>
+					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Full Pc</a></li>
+					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & pieces</a></li>
 					<li><a href="admin_football.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>				
 				</ul>
 			</li>

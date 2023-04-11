@@ -28,8 +28,8 @@
 </head>
 <body>
 	<div id="header">
-		<img src="img/logo.png">
-		<label>wamagas</label>
+		<img src="images/duns-hubicon.png">
+		<label>Duns-hub</label>
 			
 			<?php
 				$id = (int) $_SESSION['id'];
@@ -69,15 +69,11 @@
 								<tr>
 									<td class="profile">Country:</td><td class="profile"><?php echo $fetch['country'];?></td>
 								</tr>
-								<tr>
-									<td class="profile">ZIP Code:</td><td class="profile"><?php echo $fetch['zipcode'];?></td>
-								</tr>
+								
 								<tr>
 									<td class="profile">Mobile Number:</td><td class="profile"><?php echo $fetch['mobile'];?></td>
 								</tr>
-								<tr>
-									<td class="profile">Telephone Number:</td><td class="profile"><?php echo $fetch['telephone'];?></td>
-								</tr>
+								
 								<tr>
 									<td class="profile">Email:</td><td class="profile"><?php echo $fetch['email'];?></td>
 								</tr>
@@ -101,8 +97,8 @@
 				<li><a href="product1.php">  <i class="icon-th-list"></i>Product</a></li>
 				<li><a href="aboutus1.php">   <i class="icon-bookmark"></i>About Us</a></li>
 				<li><a href="contactus1.php"><i class="icon-inbox"></i>Contact Us</a></li>
-				<li><a href="privacy1.php"><i class="icon-info-sign"></i>Gas safety precautions</a></li>
-				<li><a href="faqs1.php"><i class="icon-question-sign"></i>FAQs</a></li>
+			
+				
 			</ul>
 	</div>
 		<?php 
@@ -116,7 +112,7 @@
 						<img class="img-polaroid" style="width:400px; height:350px;" src="photo/<?php echo $row['product_image']; ?>">
 						<h2 class="text-uppercase bg-primary"><?php echo $row['product_name']?></h2>
 						<h3 class="text-uppercase">KSH: <?php echo $row['product_price']?></h3>
-						<h3 class="text-uppercase">Weight: <?php echo $row['product_weight']?>Kgs</h3>
+						<h3 class="text-uppercase">Description: <?php echo $row['product_size']?>!</h3>
 						<?php echo "<a href='cart.php?id=".$id."&action=add'><input type='submit' class='btn btn-inverse' name='add' value='Add to Cart'></a> &nbsp;  <a href='product1.php'><button class='btn btn-inverse'>Back</button></a> " ?>
 					</center>
 				</div>

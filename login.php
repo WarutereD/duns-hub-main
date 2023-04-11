@@ -3,15 +3,22 @@
 <head>
 	<title>Duns-hub</title>
 	<link rel="icon" href="images/hubicon2.png" />
-	 <!-- Bootstrap CSS -->
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-7lJX9oGXLGD6j1T6Ttrf6F1aRJf+6wNCrGxgbZgGGXpwXIKq3oHCFMVK98zCQ2++tBIVq5wA2vZ5Wt2N41YR0A==" crossorigin="anonymous" />
-    
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-Rnn7z8pPimEJjcAHJdn1xkmZVJj9e9h7VlQvCv+7V8o5Mws3lbq5wvSmiWS5W8QYrzRnUy4D4PjK4n8fmHfKzw==" crossorigin="anonymous"></script>
-    
-    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-6pXz6TKHmKfNOiexTJ8eGOWw0TH/20pNoMdA/ksKfpy7VlSc9eN9Nz8a5fK0tJq3fQsdvUV/UsSKRdnFX+0yVQ==" crossorigin="anonymous"></script>
-    
+	<link rel = "stylesheet" type = "text/css" href="css/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/carousel.js"></script>
+	<script src="js/button.js"></script>
+	<script src="js/dropdown.js"></script>
+	<script src="js/tab.js"></script>
+	<script src="js/tooltip.js"></script>
+	<script src="js/popover.js"></script>
+	<script src="js/collapse.js"></script>
+	<script src="js/modal.js"></script>
+	<script src="js/scrollspy.js"></script>
+	<script src="js/alert.js"></script>
+	<script src="js/transition.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<style>
 		body {
 			background: linear-gradient(to bottom, #663399, #9b59b6);

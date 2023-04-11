@@ -22,7 +22,7 @@
 </head>
 <body>
 	<div id="header">
-		<img src="../img/logo.jpg">
+		<img src="../images/duns-hubicon.png">
 		<label>Duns-hub</label>
 	</div>
 	

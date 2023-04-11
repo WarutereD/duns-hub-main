@@ -29,7 +29,7 @@
 		<label>Duns-hub</label>
 		
 			<?php
-				$id = (int) $_SESSION['id'];
+				$id = (int) $_SESSION['customerid'];
 			
 					$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
 					$fetch = mysqli_fetch_array ($query);
@@ -45,7 +45,7 @@
 
 							<?php
 			
-								$id = (int) $_SESSION['id'];
+								$id = (int) $_SESSION['customerid'];
 			
 								$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
 								$fetch = mysqli_fetch_array ($query);
@@ -55,9 +55,9 @@
 									$lastname=$fetch['lastname'];
 									$address=$fetch['address'];
 									$country=$fetch['country'];
-									$zipcode=$fetch['zipcode'];
+									
 									$mobile=$fetch['mobile'];
-									$telephone=$fetch['telephone'];
+									
 									$email=$fetch['email'];
 									$password=$fetch['password'];
 									$customerid=$fetch['customerid'];
@@ -80,26 +80,23 @@
 								<tr>
 									<td>Address:</td><td><input type="text" name="address" placeholder="Address" style="width:430px;"required value="<?php echo $address;?>"></td>
 								</tr>
-								<tr>
-									<td>Province:</td><td><input type="text" name="country" placeholder="Province" required value="<?php echo $country;?>"></td>
-								</tr>
-								<tr>
-									<td>ZIP Code:</td><td><input type="text" name="zipcode" placeholder="ZIP Code" required value="<?php echo $zipcode;?>" maxlength="4"></td>
-								</tr>	
+								
+									
 								<tr>	
 									<td>Mobile Number:</td><td><input type="text" name="mobile" placeholder="Mobile Number" value="<?php echo $mobile;?>" maxlength="11"></td>
 								</tr>
-								<tr>
-									<td>Telephone Number:</td><td><input type="text" name="telephone" placeholder="Telephone Number" value="<?php echo $telephone;?>" maxlength="8"></td>
-								</tr>
+								
 								<tr>
 									<td>Email:</td><td><input type="email" name="email" placeholder="Email" required value="<?php echo $email;?>"></td>
 								</tr>
 								<tr>
-									<td>Password</td><td><input type="password" name="password" placeholder="Password" required value="<?php echo $password;?>"></td>
+   									 <td>Confirm Password:</td><td><input type="password" name="confirm_password" placeholder="Confirm Password" required></td>
 								</tr>
 								<tr>
-									<td></td><td><input type="submit" name="edit" value="Save Changes" class="btn btn-primary">&nbsp;<a href="home.php"><input type="button" name="cancel" value="Cancel" class="btn btn-danger"></a></td>
+									<td></td><td>
+									<input type="submit" name="edit" value="Save Changes" class="btn btn-primary" onclick="return confirm('Are you sure you want to update your account information?')">
+
+									<input type="button" name="cancel" value="Cancel" class="btn btn-danger"></a></td>
 								</tr>
 							</table>	
 						</center>

@@ -67,15 +67,11 @@
 								<tr>
 									<td class="profile">Country:</td><td class="profile"><?php echo $fetch['country'];?></td>
 								</tr>
-								<tr>
-									<td class="profile">ZIP Code:</td><td class="profile"><?php echo $fetch['zipcode'];?></td>
-								</tr>
+								
 								<tr>
 									<td class="profile">Mobile Number:</td><td class="profile"><?php echo $fetch['mobile'];?></td>
 								</tr>
-								<tr>
-									<td class="profile">Telephone Number:</td><td class="profile"><?php echo $fetch['telephone'];?></td>
-								</tr>
+								
 								<tr>
 									<td class="profile">Email:</td><td class="profile"><?php echo $fetch['email'];?></td>
 								</tr>
@@ -99,8 +95,8 @@
 				<li><a href="product1.php"> 			 <i class="icon-th-list"></i>Product</a></li>
 				<li><a href="aboutus1.php">   <i class="icon-bookmark"></i>About Us</a></li>
 				<li><a href="contactus1.php"><i class="icon-inbox"></i>Contact Us</a></li>
-				<li><a href="privacy1.php"><i class="icon-info-sign"></i>Privacy Policy</a></li>
-				<li><a href="faqs1.php"><i class="icon-question-sign"></i>FAQs</a></li>
+				
+				
 			</ul>
 	</div>
 	
@@ -167,7 +163,7 @@ if (isset($_SESSION['cart']))
 	$name=substr($name,0,40);
 	$price=$myrow['product_price'];
 	$image=$myrow['product_image'];
-	$product_weight=$myrow['product_weight'];
+	$product_size=$myrow['product_size'];
 	$line_cost=$price*$x;
 	$total=$total+$line_cost;
 	
@@ -175,7 +171,7 @@ if (isset($_SESSION['cart']))
 		echo "<tr class='table'>";
 		echo "<td><h4><img height='70px' width='70px' src='photo/".$image."'></h4></td>";
 		echo "<td><h4><input type='hidden' required value='".$id."' name='pid[]'> ".$name."</h4></td>";
-		echo "<td><h4>".$product_weight."</h4></td>";
+		echo "<td><h4>".$product_size."</h4></td>";
 		echo "<td><h4><input type='hidden' required value='".$x."' name='qty[]'> ".$x."</h4></td>";
 		echo "<td><h4>".$price."</h4></td>";
 		echo "<td><h4><a href='cart.php?id=".$id."&action=add'><i class='icon-plus-sign'></i></a></td>";

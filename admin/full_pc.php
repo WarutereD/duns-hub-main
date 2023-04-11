@@ -7,6 +7,7 @@
 <html>
 <head>
 	<title>Duns-hub</title>
+	<link rel="icon" href="../images/hubicon2.png" />
 	<link rel = "stylesheet" type = "text/css" href="../css/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	<script src="../js/bootstrap.js"></script>
@@ -49,14 +50,52 @@
 					$fetch = mysqli_fetch_array ($query);
 			?>
 				
-			<ul>
-				<li><a href="../function/admin_logout.php"><i class="icon-off icon-white"></i>logout</a></li>
-				<li>Welcome:&nbsp;&nbsp;&nbsp;<i class="icon-user icon-white"></i><?php echo $fetch['username']; ?></a></li>
-			</ul>
+				<div class="nav">	
+					<ul>
+						<li class="logout"><a href="../function/admin_logout.php"><i class="icon-off icon-white"></i>logout</a></li>
+						<li class="welcome">Welcome:&nbsp;&nbsp;&nbsp;<a><i class="icon-user icon-white"></i><?php echo $fetch['username']; ?></a></li>
+					</ul>
+				</div>
+		<br>
+		
+			
+				
+			
+			<style>
+				.navbar {
+  					display: flex;
+  					justify-content: space-between;
+  					align-items: center;
+				}
+
+				.logout {
+  					margin-left: auto;
+				}
+
+				.welcome {
+					text-align: center;
+				}
+			</style>
+	
 	</div>
 	
 	<br>
-
+	<div id="leftnav">
+		<ul>
+			<li><a href="admin_home.php" style="color:#333;">Dashboard</a></li>
+			<li><a href="admin_home.php">Products</a>
+				<ul>
+					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Full Pc</a></li>
+					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & pieces</a></li>
+					<li><a href="admin_football.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
+				</ul>
+			</li>
+			<li><a href="transaction.php">Transactions</a></li>
+			<li><a href="customer.php">Customers</a></li>
+			<li><a href="message.php">Messages</a></li>
+			<li><a href="order.php">Orders</a></li>
+		</ul>
+	</div>
 		
 		<a href="#add" role="button" class="btn btn-info" data-toggle="modal" style="position:absolute;margin-left:222px; margin-top:140px; z-index:-1000;"><i class="icon-plus-sign icon-white"></i>Add Product</a>
 		<div id="add" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
@@ -78,7 +117,7 @@
 							?>
 							<tr>
 								<td><input type="text" name="product_name" placeholder="Product Name" style="width:250px;" required></td>
-							<tr/>
+							</tr>
 							<tr>
 								<td><input type="text" name="product_price" placeholder="Price" style="width:250px;" required></td>
 							</tr>
@@ -140,29 +179,13 @@
 				
 				$q2 = mysqli_query($conn, "INSERT INTO stock ( product_id, qty) VALUES ('$product_code','$qty')");
 				
-				exit(header ("location:admin_feature.php"));
+				exit(header ("location: full_pc.php"));
 				
 			}}
 		}
 
 				?>
 			
-	<div id="leftnav">
-		<ul>
-			<li><a href="admin_home.php" style="color:#333;">Dashboard</a></li>
-			<li><a href="admin_home.php">Products</a>
-				<ul>
-					<li><a href="admin_feature.php "style="font-size:15px; margin-left:15px;">Features</a></li>
-					<li><a href="admin_product.php "style="font-size:15px; margin-left:15px;">Gas cylinders</a></li>
-					<li><a href="admin_football.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
-				</ul>
-			</li>
-			<li><a href="transaction.php">Transactions</a></li>
-			<li><a href="customer.php">Customers</a></li>
-			<li><a href="message.php">Messages</a></li>
-			<li><a href="order.php">Orders</a></li>
-		</ul>
-	</div>
 	
 	<div id="rightcontent" style="position:absolute; top:10%;">
 			<div class="alert alert-info"><center><h2>Features</h2></center></div>
@@ -234,7 +257,7 @@
  
   $que = mysqli_query($conn, "UPDATE `stock` SET `qty` = '$total' WHERE `product_id`='$pid'") or die(mysqli_error());
   
-  header("Location:admin_feature.php");
+  header("Location:full_pc.php");
 
  }
  
@@ -252,13 +275,10 @@
  
   $que = mysqli_query($conn, "UPDATE `stock` SET `qty` = '$total' WHERE `product_id`='$pid'") or die(mysqli_error());
   
-  header("Location:admin_feature.php");
+  header("Location:full_pc.php");
 
  }
   ?>				
-			
-</body>
-</html>
 <script type="text/javascript">
 	$(document).ready( function() {
 		
@@ -284,4 +304,6 @@
 		});				
 	});
 
-</script>
+</script>	
+</body>
+</html>

@@ -49,8 +49,8 @@
 			<li><a href="admin_home.php" style="color:#333;">Dashboard</a></li>
 			<li><a href="admin_home.php">Products</a>
 				<ul>
-					<li><a href="admin_feature.php "style="font-size:15px; margin-left:15px;">Features</a></li>
-					<li><a href="admin_product.php "style="font-size:15px; margin-left:15px;">Basketball</a></li>
+					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Features</a></li>
+					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & pieces</a></li>
 					<li><a href="admin_football.php" style="font-size:15px; margin-left:15px;">Football</a></li>
 					<li><a href="admin_running.php"style="font-size:15px; margin-left:15px;">Running</a></li>
 				</ul>

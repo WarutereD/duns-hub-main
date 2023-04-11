@@ -23,6 +23,36 @@
 	<script src="js/alert.js"></script>
 	<script src="js/transition.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script>
+function validateForm() {
+  var email = document.forms["signupForm"]["email"].value;
+  var password = document.forms["signupForm"]["password"].value;
+
+  if (email == "") {
+    alert("Email must be filled out");
+    return false;
+  }
+  
+  if (password == "") {
+    alert("Password must be filled out");
+    return false;
+  }
+
+  // validate email format using regular expression
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Invalid email address");
+    return false;
+  }
+
+  // validate password length
+  if (password.length < 8) {
+    alert("Password must be at least 8 characters long");
+    return false;
+  }
+}
+</script>
+
 </head>
 <body>
 	<div id="header">
@@ -84,7 +114,7 @@
     			<h3 id="myModalLabel">Sign Up Here...</h3>
   			</div>
   			<div class="modal-body">
-    			<form method="post" action="function/customer_signup.php">
+    			<form method="post" action="function/customer_signup.php" onsubmit="return validateForm()" name="signupForm">
       			<div class="form-group">
         			<label for="firstname">First Name</label>
         			<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter your first name" required>
@@ -100,6 +130,10 @@
       			<div class="form-group">
         			<label for="address">Address</label>
         			<input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" required>
+      			</div>
+				  <div class="form-group">
+        			<label for="country">Country</label>
+        			<input type="text" class="form-control" id="country" name="country" placeholder="Enter your country" required>
       			</div>
       			<div class="form-group">
         			<label for="mobile">Mobile Number</label>

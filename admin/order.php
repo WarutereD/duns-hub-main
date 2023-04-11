@@ -171,8 +171,8 @@
 			<li><a href="admin_home.php" style="color:#333;">Dashboard</a></li>
 			<li><a href="admin_home.php">Products</a>
 				<ul>
-					<li><a href="admin_feature.php "style="font-size:15px; margin-left:15px;">Features</a></li>
-					<li><a href="admin_product.php "style="font-size:15px; margin-left:15px;">Gas cylinders</a></li>
+					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Full Pc</a></li>
+					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & Pieces</a></li>
 					<li><a href="admin_football.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
 				</ul>
 			</li>
