@@ -8,8 +8,8 @@ $paypal_id='yhannaki@gmail.com'; // Business email ID
 ?>
 <html>
 <head>
-	<title>wamagas</title>
-	<link rel="icon" href="img/logo.png" />
+	<title>Duns-hub</title>
+	<link rel="icon" href="images/hubicon2.png" />
 	<link rel = "stylesheet" type = "text/css" href="css/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<script src="js/bootstrap.js"></script>
@@ -30,11 +30,11 @@ $paypal_id='yhannaki@gmail.com'; // Business email ID
 <body>
 
 	<div id="header">
-		<img src="img/logo.png">
-		<label>wamagas</label>
+	<img src="images/duns-hubicon.png">
+		<label>Duns-hub</label>
 			
 			<?php
-				$id = (int) $_SESSION['id'];
+				$id = (int) $_SESSION['customerid'];
 			
 					$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
 					$fetch = mysqli_fetch_array ($query);
@@ -53,7 +53,7 @@ $paypal_id='yhannaki@gmail.com'; // Business email ID
 				</div>
 					<div class="modal-body">
 						<?php
-							$id = (int) $_SESSION['id'];
+							$id = (int) $_SESSION['customerid'];
 			
 								$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
 								$fetch = mysqli_fetch_array ($query);
@@ -72,13 +72,7 @@ $paypal_id='yhannaki@gmail.com'; // Business email ID
 									<td class="profile">Country:</td><td class="profile"><?php echo $fetch['country'];?></td>
 								</tr>
 								<tr>
-									<td class="profile">ZIP Code:</td><td class="profile"><?php echo $fetch['zipcode'];?></td>
-								</tr>
-								<tr>
 									<td class="profile">Mobile Number:</td><td class="profile"><?php echo $fetch['mobile'];?></td>
-								</tr>
-								<tr>
-									<td class="profile">Telephone Number:</td><td class="profile"><?php echo $fetch['telephone'];?></td>
 								</tr>
 								<tr>
 									<td class="profile">Email:</td><td class="profile"><?php echo $fetch['email'];?></td>
@@ -103,8 +97,7 @@ $paypal_id='yhannaki@gmail.com'; // Business email ID
 				<li><a href="product1.php"> 			 <i class="icon-th-list"></i>Product</a></li>
 				<li><a href="aboutus1.php">   <i class="icon-bookmark"></i>About Us</a></li>
 				<li><a href="contactus1.php"><i class="icon-inbox"></i>Contact Us</a></li>
-				<li><a href="privacy1.php"><i class="icon-info-sign"></i>Privacy Policy</a></li>
-				<li><a href="faqs1.php"><i class="icon-question-sign"></i>FAQs</a></li>
+				
 			</ul>
 	</div>
 	
@@ -197,7 +190,7 @@ $paypal_id='yhannaki@gmail.com'; // Business email ID
 	<div id="footer">
 		<div class="foot">
 			<label style="font-size:17px;"> Copyrght &copy; </label>
-			<p style="font-size:25px;">wamagas Inc. 2021</p>
+			<p style="font-size:25px;">Duns-hub Inc. 2023</p>
 		</div>
 			
 			<div id="foot">

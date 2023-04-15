@@ -27,7 +27,22 @@
 	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<div id="header">
+		<img src="images/duns-hubicon.png">
+		<label>Duns-hub</label>
+			
+			<?php
+				$id = (int) $_SESSION['customerid'];
+			
+					$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
+					$fetch = mysqli_fetch_array ($query);
+			?>
+	
+			<ul>
+				<li><a href="function/logout.php"><i class="icon-off icon-white"></i>logout</a></li>
+				<li>Welcome:&nbsp;&nbsp;&nbsp;<a href="#profile" href  data-toggle="modal"><i class="icon-user icon-white"></i><?php echo $fetch['firstname']; ?>&nbsp;<?php echo $fetch['lastname'];?></a></li>
+			</ul>
+	</div>
 		
 			
 	<br>
@@ -36,17 +51,17 @@
 	<div class="nav">
 	
 			 <ul>
-				<li><a href="index.php"><i class="icon-home"></i>Home</a></li>
-				<li><a href="product.php"><i class="icon-th-list"></i>Product</a>
-				<li><a href="aboutus.php"><i class="icon-bookmark"></i>About Us</a></li>
-				<li><a href="contactus.php"><i class="icon-inbox"></i>Contact Us</a></li>
+				<li><a href="home.php"><i class="icon-home"></i>Home</a></li>
+				<li><a href="product11.php"><i class="icon-th-list"></i>Product</a>
+				<li><a href="aboutus1.php"><i class="icon-bookmark"></i>About Us</a></li>
+				<li><a href="contactus1.php"><i class="icon-inbox"></i>Contact Us</a></li>
 				
 			</ul>
 	</div>
 	
 	<div class="nav1">
 		<ul>
-			<li><a href="product.php" class="active" style="color:#111;">Full Pc</a></li>
+			<li><a href="product11.php" class="active" style="color:#111;">Full Pc</a></li>
 			<li>|</li>
 			<li><a href="accessories.php" >Accessories</a></li>
 			<li>|</li>
@@ -84,6 +99,7 @@
 							echo "<br />";
 							echo "<b>KSH: ".$fetch['product_price']."/-</b>";
 							
+						
 							echo "<br />";							
 							echo "</div>";
 						}

@@ -7,6 +7,7 @@
 <html>
 <head>
 	<title>Duns-hub</title>
+	<link rel="icon" href="../images/hubicon2.png" />
 	<link rel = "stylesheet" type = "text/css" href="../css/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	<script src="../js/bootstrap.js"></script>
@@ -40,7 +41,7 @@
 </head>
 <body>
 	<div id="header" style="position:fixed;">
-		<img src="../img/logo.jpg">
+		<img src="../images/hubicon2.png">
 		<label>Duns-hub</label>
 		
 			<?php
@@ -79,7 +80,7 @@
 							?>
 							<tr>
 								<td><input type="text" name="product_name" placeholder="Product Name" style="width:250px;" required></td>
-							<tr/>
+							</tr>
 							<tr>
 								<td><input type="text" name="product_price" placeholder="Price" style="width:250px;" required></td>
 							</tr>
@@ -185,7 +186,7 @@
 				<tbody>
 				<?php
 					
-					$query = mysqli_query($conn, "SELECT * FROM `product` WHERE category=' cylinder' ORDER BY product_id DESC") or die(mysqli_error());
+					$query = mysqli_query($conn, "SELECT * FROM `product` WHERE category='accessories' ORDER BY product_id DESC") or die(mysqli_error());
 					while($fetch = mysqli_fetch_array($query))
 						{
 						$id = $fetch['product_id'];

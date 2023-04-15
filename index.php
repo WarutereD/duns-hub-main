@@ -159,7 +159,7 @@ function validateForm() {
 	
 			 <ul>
 				<li><a href="index.php"><i class="icon-home"></i>Home</a></li>
-				<li><a href="product1.php"><i class="icon-th-list"></i>Product</a>
+				<li><a href="product.php"><i class="icon-th-list"></i>Product</a>
 				<li><a href="aboutus.php"><i class="icon-bookmark"></i>About Us</a></li>
 				<li><a href="contactus.php"><i class="icon-inbox"></i>Contact Us</a></li>
 				

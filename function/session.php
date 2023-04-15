@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+
+
 if (!function_exists('logged_in')) {
     function logged_in() {
         return isset($_SESSION['customerid']);

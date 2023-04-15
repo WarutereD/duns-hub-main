@@ -1,6 +1,5 @@
 <?php
-
-	include('db/dbconn.php');
+ 	include('conn.php');
 	if (isset($_POST['signup']))
 {
 	$firstname=$_POST['firstname'];
@@ -25,6 +24,9 @@
 					mysqli_query ($conn, "INSERT INTO customer (firstname, mi, lastname, address, country,  mobile,  email, password)
 					VALUES ('$firstname', '$mi', '$lastname', '$address', '$country',  '$mobile',  '$email', '$hashed_password')") 
 					or die(mysqli_error());	
+					
+					header("Location: ../index.php");
+					exit();
 				}				
 					
 }

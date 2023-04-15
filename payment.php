@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Wamagas</title>
-	<link rel="icon" href="img/logo.jpg" />
+	<title>Duns-hub</title>
+	<link rel="icon" href="images/hubicon2.png" />
 	<link rel = "stylesheet" type = "text/css" href="css/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<script src="js/bootstrap.js"></script>
@@ -26,11 +26,11 @@
 </head>
 <body>
 	<div id="header">
-		<img src="img/logo.jpg">
-		<label>wamagas</label>
+	<img src="images/duns-hubicon.png">
+		<label>Duns-hub</label>
 			
 			<?php
-				$id = (int) $_SESSION['id'];
+				$id = (int) $_SESSION['customerid'];
 			
 					$query = mysql_query ("SELECT * FROM customer WHERE customerid = '$id' ") or die (mysql_error());
 					$fetch = mysql_fetch_array ($query);
@@ -49,7 +49,7 @@
 				</div>
 					<div class="modal-body">
 						<?php
-							$id = (int) $_SESSION['id'];
+							$id = (int) $_SESSION['customerid'];
 			
 								$query = mysql_query ("SELECT * FROM customer WHERE customerid = '$id' ") or die (mysql_error());
 								$fetch = mysql_fetch_array ($query);
@@ -67,15 +67,11 @@
 								<tr>
 									<td class="profile">Country:</td><td class="profile"><?php echo $fetch['country'];?></td>
 								</tr>
-								<tr>
-									<td class="profile">ZIP Code:</td><td class="profile"><?php echo $fetch['zipcode'];?></td>
-								</tr>
+								
 								<tr>
 									<td class="profile">Mobile Number:</td><td class="profile"><?php echo $fetch['mobile'];?></td>
 								</tr>
-								<tr>
-									<td class="profile">Telephone Number:</td><td class="profile"><?php echo $fetch['telephone'];?></td>
-								</tr>
+								
 								<tr>
 									<td class="profile">Email:</td><td class="profile"><?php echo $fetch['email'];?></td>
 								</tr>
@@ -99,8 +95,7 @@
 				<li><a href="product1.php"> 			 <i class="icon-th-list"></i>Product</a></li>
 				<li><a href="aboutus1.php">   <i class="icon-bookmark"></i>About Us</a></li>
 				<li><a href="contactus1.php"><i class="icon-inbox"></i>Contact Us</a></li>
-				<li><a href="privacy1.php"><i class="icon-info-sign"></i>Gas safety precautions</a></li>
-				<li><a href="faqs1.php"><i class="icon-question-sign"></i>FAQs</a></li>
+				
 			</ul>
 	</div>
 	<br>

@@ -122,7 +122,7 @@
 			<?php 
 				include ('function/addcart.php');
 				
-				$query = mysqli_query($conn, "SELECT * FROM product WHERE category= 'gas cylinder' ORDER BY product_id DESC") or die (mysqli_error());
+				$query = mysqli_query($conn, "SELECT * FROM product WHERE category= 'parts_pieces' ORDER BY product_id DESC") or die (mysqli_error());
 				
 					while($fetch = mysqli_fetch_array($query))
 						{
@@ -142,8 +142,7 @@
 							echo "<b>".$fetch['product_name']."</b>";
 							echo "<br />";
 							echo "<b>KSH: ".$fetch['product_price']."/-</b>";
-							echo "<br />";
-							echo "<b> ".$fetch['product_weight']." KGS</b>";
+							
 							echo "<br />";							
 							echo "</div>";
 
@@ -168,7 +167,7 @@
 	<div id="footer">
 		<div class="foot">
 			<label style="font-size:17px;"> Copyrght &copy; </label>
-			<p style="font-size:25px;">wamagas Inc. 2021</p>
+			<p style="font-size:25px;">Duns-hub Inc. 2023</p>
 		</div>
 			
 			<div id="foot">

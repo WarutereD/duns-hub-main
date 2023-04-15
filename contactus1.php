@@ -30,7 +30,7 @@
 		<label>Duns-hub</label>
 			
 			<?php
-				$id = (int) $_SESSION['id'];
+				$id = (int) $_SESSION['customerid'];
 			
 					$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
 					$fetch = mysqli_fetch_array ($query);
@@ -49,7 +49,7 @@
 				</div>
 					<div class="modal-body">
 						<?php
-							$id = (int) $_SESSION['id'];
+							$id = (int) $_SESSION['customerid'];
 			
 								$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
 								$fetch = mysqli_fetch_array ($query);
@@ -67,15 +67,11 @@
 								<tr>
 									<td class="profile">Country:</td><td class="profile"><?php echo $fetch['country'];?></td>
 								</tr>
-								<tr>
-									<td class="profile">ZIP Code:</td><td class="profile"><?php echo $fetch['zipcode'];?></td>
-								</tr>
+								
 								<tr>
 									<td class="profile">Mobile Number:</td><td class="profile"><?php echo $fetch['mobile'];?></td>
 								</tr>
-								<tr>
-									<td class="profile">Telephone Number:</td><td class="profile"><?php echo $fetch['telephone'];?></td>
-								</tr>
+								
 								<tr>
 									<td class="profile">Email:</td><td class="profile"><?php echo $fetch['email'];?></td>
 								</tr>
@@ -95,12 +91,11 @@
 <div id="container">
 	<div class="nav">	
 			 <ul>
-				<li><a href="home.php">   <i class="icon-home"></i>Home</a></li>
-				<li><a href="product1.php"> 			 <i class="icon-th-list"></i>Product</a></li>
-				<li><a href="aboutus1.php">   <i class="icon-bookmark"></i>About Us</a></li>
+				<li><a href="home.php"><i class="icon-home"></i>Home</a></li>
+				<li><a href="product1.php"><i class="icon-th-list"></i>Product</a></li>
+				<li><a href="aboutus1.php"><i class="icon-bookmark"></i>About Us</a></li>
 				<li><a href="contactus1.php"><i class="icon-inbox"></i>Contact Us</a></li>
-				<li><a href="privacy1.php"><i class="icon-info-sign"></i>Gas safety precautions</a></li>
-				<li><a href="faqs1.php"><i class="icon-question-sign"></i>FAQs</a></li>
+				
 			</ul>
 	</div>
 	

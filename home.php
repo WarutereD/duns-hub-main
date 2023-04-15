@@ -102,9 +102,9 @@
 	
 			 <ul>
 				<li><a href="home.php"><i class="icon-home"></i>Home</a></li>
-				<li><a href="product1.php"><i class="icon-th-list"></i>Product</a>
-				<li><a href="aboutus.php"><i class="icon-bookmark"></i>About Us</a></li>
-				<li><a href="contactus.php"><i class="icon-inbox"></i>Contact Us</a></li>
+				<li><a href="product11.php"><i class="icon-th-list"></i>Product</a>
+				<li><a href="aboutus1.php"><i class="icon-bookmark"></i>About Us</a></li>
+				<li><a href="contactus1.php"><i class="icon-inbox"></i>Contact Us</a></li>
 			</ul>
 		</div>
 		
@@ -127,7 +127,7 @@
       			<p>Price: KSH20.00</p>
     		</div>
     		<div class="item-image">
-      			<img src="images/mpesa.png" alt="Item Image">
+      			<img src="images/ps5.jpg" alt="Item Image">
     		</div>
   		 </div>
   		<div class="item-wrapper">
@@ -137,7 +137,7 @@
       			<p>Price: KSH30.00</p>
     		</div>
     		<div class="item-image">
-      			<img src="images/mpesa.png" alt="Item Image">
+      			<img src="images/ryzen cpu.webp" alt="Item Image">
     		</div>
   		</div>
 		<div class="item-arrow item-prev"><i class="fa fa-chevron-left"></i></div>
