@@ -66,9 +66,9 @@
 						<input type="text" name="lastname" placeholder="Lastname" required>
 						<input type="text" name="address" placeholder="Address" style="width:430px;"required>
 						<input type="text" name="country" placeholder="Province" required>
-						<input type="text" name="zipcode" placeholder="ZIP Code" required maxlength="4">
+						
 						<input type="text" name="mobile" placeholder="Mobile Number" maxlength="11">
-						<input type="text" name="telephone" placeholder="Telephone Number" maxlength="8">
+						
 						<input type="email" name="email" placeholder="Email" required>
 						<input type="password" name="password" placeholder="Password" required>
 						</center>
@@ -88,8 +88,7 @@
 				<li><a href="product.php"> 			 <i class="icon-th-list"></i>Product</a></li>
 				<li><a href="aboutus.php">   <i class="icon-bookmark"></i>About Us</a></li>
 				<li><a href="contactus.php"><i class="icon-inbox"></i>Contact Us</a></li>
-				<li><a href="privacy.php"><i class="icon-info-sign"></i>Gas safety precautions</a></li>
-				<li><a href="faqs.php"><i class="icon-question-sign"></i>FAQs</a></li>
+				
 			</ul>
 	</div>
 	

@@ -202,11 +202,12 @@ if (!isset($_SESSION['cart'])) {
 			
 	<div class='pull-right'>
 	<a href='home.php' class='btn btn-inverse btn-lg'>Continue Shopping</a>
-	<?php echo '<button name="total" type="submit" class="btn btn-inverse btn-lg" data-toggle="modal" data-target="#purchase">Purchase</button>'; 
+	<a href='payment.php' class='btn btn-inverse btn-lg'>Purchase</a>
+	<!--<?php echo '<button name="total" type="submit" class="btn btn-inverse btn-lg" data-toggle="modal" data-target="#purchase">Purchase</button>'; 
 
-	include ("function/paypal.php"); 
+	//include ("function/paypal.php"); 
 	//include ("function/mpesa.php"); 
-	?>
+	?>-->
 	</form>
 	</div>
 

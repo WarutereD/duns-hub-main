@@ -186,7 +186,7 @@ function validateForm() {
       			<p>Price: KSH20.00</p>
     		</div>
     		<div class="item-image">
-      			<img src="images/mpesa.png" alt="Item Image">
+      			<img src="images/ps5.jpg" alt="Item Image">
     		</div>
   		 </div>
   		<div class="item-wrapper">
@@ -196,7 +196,7 @@ function validateForm() {
       			<p>Price: KSH30.00</p>
     		</div>
     		<div class="item-image">
-      			<img src="images/mpesa.png" alt="Item Image">
+      			<img src="images/ryzen cpu.webp" alt="Item Image">
     		</div>
   		</div>
 		<div class="item-arrow item-prev"><i class="fa fa-chevron-left"></i></div>
