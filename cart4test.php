@@ -107,65 +107,121 @@ if (!isset($_SESSION['cart'])) {
 	
 	
 
-	<?php
-    $id = isset($_GET['id']) ? $_GET['id'] : 1;
-    $action = isset($_GET['action']) ? $_GET['action'] : 'empty';
+	<form method="post" action="function/place_order.php" class="well" style="background-color:#fff;">
+		<table class="table">
+		<label style="font-size:25px;">My Cart</label>
+		<tr>
+			<th><h3>Image</h3></td>
+			<th><h3>Product Name</h3></th>
+			<th><h3>Size</h3></th>
+			<th><h3>Quantity</h3></th>
+			<th><h3>Price</h3></th>
+			<th><h3>Add</h3></th>
+			<th><h3>Remove</h3></th>
+			<th><h3>Subtotal</h3></th>
+		</tr>
 
-    switch ($action) {
-        case 'view':
-            $_SESSION['cart'][$id];
-            break;
-        case 'add':
-            $_SESSION['cart'][$id] = isset($_SESSION['cart'][$id]) ? $_SESSION['cart'][$id] + 1 : 1;
-            break;
-        case 'remove':
-            if (isset($_SESSION['cart'][$id])) {
-                $_SESSION['cart'][$id]--;
-                if ($_SESSION['cart'][$id] == 0) {
-                    unset($_SESSION['cart'][$id]);
-                }
-            }
-            break;
-        case 'empty':
-            unset($_SESSION['cart']);
-            break;
-    }
+		<?php
 
-    if (!empty($_SESSION["cart"])) {
-        $count_cart = count($_SESSION["cart"]);
-    
-        for ($i = 0; $i < $count_cart; $i++) {
-            $product_id = $_SESSION["cart"][$i]["product_id"];
-            $query = "SELECT * FROM tblproduct WHERE PROID = '$product_id'";
-            $result = $db_handle->runQuery($query);
-    
-            if (!empty($result)) {
-                foreach ($result as $row) {
-                    $product_name = $row["PRONAME"];
-                    $product_price = $row["PROPRICE"];
-                    $product_quantity = $_SESSION["cart"][$i]["quantity"];
-                    $sub_total = $product_price * $product_quantity;
-                    $total_price += $sub_total;
-                    ?>
-                    <tr>
-                        <td><?php echo $product_name; ?></td>
-                        <td><?php echo $product_quantity; ?></td>
-                        <td><?php echo $product_price; ?></td>
-                        <td><?php echo $sub_total; ?></td>
-                    </tr>
-                    <?php
-                }
-            }
-        }
-    }
-    ?>
-    <tr>
-        <td colspan="3" align="right">Total:</td>
-        <td align="right"><?php echo $total_price; ?></td>
-    </tr>
-   
-    
-    
+		$id = isset($_GET['id']) ? $_GET['id'] : 1;
+		$action = isset($_GET['action']) ? $_GET['action'] : 'empty';
+
+		switch ($action) {
+			case 'view':
+				$_SESSION['cart'][$id];
+				break;
+			case 'add':
+				$_SESSION['cart'][$id] = isset($_SESSION['cart'][$id]) ? $_SESSION['cart'][$id] + 1 : 1;
+				break;
+			case 'remove':
+				if (isset($_SESSION['cart'][$id])) {
+					$_SESSION['cart'][$id]--;
+					if ($_SESSION['cart'][$id] == 0) {
+						unset($_SESSION['cart'][$id]);
+					}
+				}
+				break;
+			case 'empty':
+				unset($_SESSION['cart']);
+				break;
+		}
+
+
+
+		
+		if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0) {
+			$total = 0;
+			foreach($_SESSION['cart'] as $product_id => $quantity) {
+				// code to retrieve product details from database
+				$query = "SELECT * FROM product WHERE product_id = '$id'";
+				$result = mysqli_query($conn, $query);
+
+				if ($result && mysqli_num_rows($result) > 0) {
+					$row = mysqli_fetch_assoc($result);
+		
+					$name = substr($row['product_name'], 0, 40);
+					$price = $row['product_price'];
+					$image = $row['product_image'];
+					$product_size = $row['product_size'];
+
+					// calculate line cost
+					$line_cost = $price * $quantity;
+			
+					// add line cost to total
+					$total += $line_cost;
+
+			
+					// Output the product information in a table row
+					echo "<tr>";
+					echo "<td><img height='70px' width='70px' src='photo/".$image."'></td>";
+					echo "<td>".$name."</td>";
+					echo "<td><input type='hidden' required value='".$id."' name='pid[]'></td>";
+					echo "<td>".$product_size."</td>";
+					echo "<td><input type='hidden' required value='".$quantity."' name='qty[]'>".$quantity."</td>";
+					echo "<td>".$price."</td>";
+					echo "<td><a href='cart.php?id=".$id."&action=add'><i class='icon-plus-sign'></i></a></td>";
+					echo "<td><a href='cart.php?id=".$id."&action=remove'><i class='icon-minus-sign'></i></a></td>";
+					echo "<td><strong>P ".$line_cost."</strong></td>";
+					echo "</tr>";
+				}
+			}
+			// Output the total cost of the order
+			echo "<tr>";
+			echo "<td colspan='7' align='right'><strong>Total:</strong></td>";
+			if(isset($total)) {
+				echo "<td><strong>P ".$total."</strong></td>";
+			} else {
+				echo "<td><strong>P 0.00</strong></td>";
+			}
+			echo "<td><a class='btn btn-danger btn-sm pull-right' href='cart.php?id=".$id."&action=empty'><i class='fa fa-trash-o'></i> Empty cart</a></td>";		
+			echo "</tr>";
+			
+		}else {
+			// Output a message if the cart is empty
+			echo "<tr>";
+			echo "<td colspan='8' style='text-align:center'>Cart is empty</td>";
+			echo "</tr>";
+		}
+		
+		
+		?>
+		</table>
+
+
+				
+		<div class='pull-right'>
+		<a href='home.php' class='btn btn-inverse btn-lg'>Continue Shopping</a>
+		
+		<a href='payment.php?id=<?php echo $id ?>&action=place_order' class='btn btn-inverse btn-lg'>Proceed & Checkout</a>
+		<button name="place_order" type="submit" class="btn btn-inverse btn-lg">Purchase</button>
+
+		<!--<?php echo '<button name="total" type="submit" class="btn btn-inverse btn-lg" >Purchase</button>'; 
+		
+		
+		//include ("function/paypal.php"); 
+		//include ("function/mpesa.php"); 
+		?>-->
+		</form>
     
     
     

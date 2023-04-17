@@ -101,77 +101,61 @@
 			</ul>
 	</div>
 	<br>
-	<? php
-	// Retrieve user details from session variables
-$customer_id = $_SESSION['customer_id'];
-$user_name = $_SESSION['firstname'];
-$user_email = $_SESSION['email'];
-
-/ Retrieve cart details from session variables
-if (isset($_SESSION['cart'])) {
-    $cart_items = $_SESSION['cart'];
-} else {
-    $cart_items = array();
-}
-?>
-
-<!-- Display user and cart details in a table -->
-<table>
-    <thead>
-        <tr>
-            <th>User ID</th>
-            <th>User Name</th>
-            <th>User Email</th>
-            <th>Product Name</th>
-            <th>Size</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Subtotal</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        // Initialize total cost variable
-        $total_cost = 0;
-
-        // Loop through cart items and display them in a table row
-        foreach ($cart_items as $product_id => $product_qty) {
-            // Retrieve product details from database
-            $query = "SELECT * FROM product WHERE product_id = '$product_id'";
-            $result = mysqli_query($conn, $query);
-
-            if ($result && mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
-
-                $product_name = substr($row['product_name'], 0, 40);
-                $product_size = $row['product_size'];
-                $product_price = $row['product_price'];
-                $line_cost = $product_price * $product_qty;
-                $total_cost += $line_cost;
-
-                // Display cart item in a table row
-                echo "<tr>";
-                echo "<td>$customer_id</td>";
-                echo "<td>$user_name</td>";
-                echo "<td>$user_email</td>";
-                echo "<td>$product_name</td>";
-                echo "<td>$product_size</td>";
-                echo "<td>$product_qty</td>";
-                echo "<td>$product_price</td>";
-                echo "<td>$line_cost</td>";
-                echo "</tr>";
-            }
-        }
-
-        // Display total cost in a table row
-        echo "<tr>";
-        echo "<td colspan='7'>Total Cost</td>";
-        echo "<td>$total_cost</td>";
-        echo "</tr>";
-        ?>
-    </tbody>
-</table>
-	
+</div>
+<div>
+<h1>Payment Details</h1>
+	<table>
+		<tr>
+			<th>Transaction ID</th>
+			<th>Customer ID</th>
+			<th>Total Amount</th>
+			<th>Order Status</th>
+			<th>Order Date</th>
+		</tr>
+		<?php
+			
+			$prodid = $_GET['id'];
+			$query = mysqli_query($conn, "SELECT * FROM transaction WHERE transaction_id='$tid'");
+			$fetch = mysqli_fetch_array($query);
+			$t_id = $fetch['transaction_id'];
+			$c_id = $fetch['customerid'];
+			$amount = $fetch['amount'];
+			$status = $fetch['order_stat'];
+			$date = $fetch['order_date'];
+		?>
+		<tr>
+			<td><?php echo $t_id; ?></td>
+			<td><?php echo $c_id; ?></td>
+			<td><?php echo $amount; ?></td>
+			<td><?php echo $status; ?></td>
+			<td><?php echo $date; ?></td>
+		</tr>
+	</table>
+	<br>
+	<h2>Ordered Items</h2>
+	<table>
+		<tr>
+			<th>Product ID</th>
+			<th>Product Name</th>
+			<th>Order Quantity</th>
+		</tr>
+		<?php
+			$queryo = mysqli_query($conn, "SELECT * FROM transaction_detail INNER JOIN product ON transaction_detail.product_id = product.productid WHERE transaction_id='$tid'");
+			while($fetcho = mysqli_fetch_array($queryo))
+			{
+				$p_id = $fetcho['product_id'];
+				$p_name = $fetcho['product_name'];
+				$o_qty = $fetcho['order_qty'];
+		?>
+		<tr>
+			<td><?php echo $p_id; ?></td>
+			<td><?php echo $p_name; ?></td>
+			<td><?php echo $o_qty; ?></td>
+		</tr>
+		<?php
+			}
+		?>
+	</table>
 </div>
 </body>
 </html>

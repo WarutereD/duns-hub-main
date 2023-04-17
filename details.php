@@ -113,7 +113,7 @@
             	<h2 class="text-uppercase bg-primary"><?php echo $row['product_name']?></h2>
             	<h3 class="text-uppercase">KSH: <?php echo $row['product_price']?></h3>
             	<h3 class="text-uppercase">Description: <?php echo $row['product_size']?>!</h3>
-            	<a href='cart.php?id=<?php echo $id ?>&action=add' class='btn btn-inverse'>Add to Cart</a>
+            	<a href='cart4test.php?id=<?php echo $id ?>&action=add' class='btn btn-inverse'>Add to Cart</a>
             	<a href='product1.php' class='btn btn-inverse'>Back</a>
         	</center>
     	</div>
@@ -162,7 +162,7 @@
 		<div id="terms" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-				<h3 id="myModalLabel">wamagas Inc. Terms and Condition</h3>
+				<h3 id="myModalLabel">Duns-hub Inc. Terms and Condition</h3>
 			</div>
 				<div class="modal-body">
 					<ul>
@@ -188,14 +188,14 @@
 	<div id="footer">
 		<div class="foot">
 			<label style="font-size:17px;"> Copyrght &copy; </label>
-			<p style="font-size:25px;">wamagas Inc. 2021</p>
+			<p style="font-size:25px;">Duns-hub Inc. 2023</p>
 		</div>
 			
 			<div id="foot">
 				<h4>Links</h4>
 					<ul>
-						<a href="http://www.facebook.com/wamagas"><li>Facebook</li></a>
-						<a href="http://www.twitter.com/wamagas"><li>Twitter</li></a>				
+						<a href="http://www.facebook.com/duns-hub"><li>Facebook</li></a>
+						<a href="http://www.twitter.com/duns-hub"><li>Twitter</li></a>				
 					</ul>
 			</div>
 			
