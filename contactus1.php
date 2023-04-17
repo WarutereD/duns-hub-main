@@ -53,6 +53,7 @@
 			
 								$query = mysqli_query ($conn, "SELECT * FROM customer WHERE customerid = '$id' ") or die (mysqli_error());
 								$fetch = mysqli_fetch_array ($query);
+								
 						?>
 						<center>
 					<form method="post">
@@ -76,6 +77,7 @@
 									<td class="profile">Email:</td><td class="profile"><?php echo $fetch['email'];?></td>
 								</tr>
 							</table>
+							
 						</center>
 					</div>
 				<div class="modal-footer">
@@ -108,7 +110,7 @@
 			<form method="post">
 				<table style="position:relative; left:25%;">
 					<tr>
-						<td style="font-size:20px;">Email:</td><td><input type="email" name="email" value="<?php echo $fetch['email']; ?>" style="width:400px;" disabled></td>
+						<td style="font-size:20px;">Email:</td><td><input type="email" name="email"  style="width:400px;"></td>
 					</tr>
 					<tr>
 						<td style="font-size:20px;">Message:</td><td><textarea name="message" style="width:400px; height:300px;" required></textarea></td>
@@ -127,7 +129,7 @@
 				@$email = $_POST['email'];
 				@$message = $_POST['message'];
 				
-				mysqli_query ($conn, "INSERT INTO `contact` (email, message) VALUES ('$email', '$message')") or die (mysqli_error());
+				mysqli_query ($conn, "INSERT INTO `contact` (customerid, email, message) VALUES ('$id','$email', '$message')") or die (mysqli_error());
 			}
 		?>
 		

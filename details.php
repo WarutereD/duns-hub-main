@@ -113,7 +113,7 @@
             	<h2 class="text-uppercase bg-primary"><?php echo $row['product_name']?></h2>
             	<h3 class="text-uppercase">KSH: <?php echo $row['product_price']?></h3>
             	<h3 class="text-uppercase">Description: <?php echo $row['product_size']?>!</h3>
-            	<a href='cart4test.php?id=<?php echo $id ?>&action=add' class='btn btn-inverse'>Add to Cart</a>
+            	<a href='cart.php?id=<?php echo $id ?>&action=add' class='btn btn-inverse'>Add to Cart</a>
             	<a href='product1.php' class='btn btn-inverse'>Back</a>
         	</center>
     	</div>

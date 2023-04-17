@@ -210,7 +210,7 @@
 		$query = mysqli_query($conn, "SELECT * FROM transaction WHERE transaction_id = '$t_id'") or die (mysqli_error());
 		$fetch = mysqli_fetch_array($query);
 		
-		$amnt = $fetch['amount'];
+		//$amnt = $fetch['amount'];
 		echo "Date : ". $fetch['order_date']."";
 		
 		$query2 = mysqli_query($conn, "SELECT * FROM transaction_detail LEFT JOIN product ON product.product_id = transaction_detail.product_id WHERE transaction_detail.transaction_id = '$t_id'") or die (mysqli_error());
@@ -220,6 +220,8 @@
 		$pdesc = $row['product_description'];
 		$pprice = $row['product_price'];
 		$oqty = $row['order_qty'];
+
+		
 		
 		echo "<tr>";
 		echo "<td>".$oqty."</td>";
@@ -232,7 +234,7 @@
 
 	</table>
 	<legend></legend>
-	<h4>TOTAL: KSH: <?php echo $amnt; ?></h4>
+	<h4>TOTAL: KSH: <?php echo $pprice; ?></h4>
 	<label style="font-size:20px;">**Thank you for shopping with Duns-hub**</label>
 	</center>
 	</div>

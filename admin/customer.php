@@ -24,6 +24,33 @@
 	<script src="../js/transition.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../javascripts/filter.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+		$('a[rel*=facebox]').facebox() 
+		})
+		</script>
+		
+		<script language="javascript" type="text/javascript">
+        function printDiv(divID) {
+            //Get the HTML of div
+            var divElements = document.getElementById(divID).innerHTML;
+            //Get the HTML of whole page
+            var oldPage = document.body.innerHTML;
+
+            //Reset the page's HTML with div's HTML only
+            document.body.innerHTML = 
+              "<html><head><title></title></head><body>" + 
+              divElements + "</body>";
+
+            //Print Page
+            window.print();
+
+            //Restore orignal HTML
+            document.body.innerHTML = oldPage;
+
+          
+        }
+		</script>
 </head>
 <body>
 	<div id="header" style="position:fixed;">
@@ -71,6 +98,7 @@
 			<br />
 		
 		<div class="alert alert-info">
+		<div id="printablediv">
 			<table class="table table-hover" style="background-color:;">
 				<thead>
 				<tr style="font-size:20px;">
@@ -102,7 +130,9 @@
 				?>
 			</table>
 		</div>
-			
+		</div>
+		<div class="add"><a onclick="javascript:printDiv('printablediv')" name="print" style="cursor:pointer;" class="btn btn-info"><i class="icon-white icon-print"></i> Print customer list</a></div>
+
 	</div>
 	
 	

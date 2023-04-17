@@ -72,6 +72,7 @@
 			<table class="table table-hover" style="background-color:;">
 				<thead>
 				<tr style="font-size:20px;">
+					<th>Customer Id</th>
 					<th>Email</th>
 					<th>Message</th>
 				</tr>
@@ -82,6 +83,7 @@
 						{
 				?>
 				<tr>
+					<td><?php echo $fetch['customerid'];?></td>
 					<td><?php echo $fetch['email'];?></td>
 					<td><?php echo $fetch['message']?></td>
 				</tr>		
