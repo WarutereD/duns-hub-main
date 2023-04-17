@@ -1,6 +1,7 @@
 <?php
 	include("function/session.php");
 	include("db/dbconn.php");
+	include("function/place_order.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -93,62 +94,83 @@
 	<div class="nav">	
 			 <ul>
 				<li><a href="home.php">   <i class="icon-home"></i>Home</a></li>
-				<li><a href="product1.php"> 			 <i class="icon-th-list"></i>Product</a></li>
+				<li><a href="product1.php"> <i class="icon-th-list"></i>Product</a></li>
 				<li><a href="aboutus1.php">   <i class="icon-bookmark"></i>About Us</a></li>
 				<li><a href="contactus1.php"><i class="icon-inbox"></i>Contact Us</a></li>
 				
 			</ul>
 	</div>
 	<br>
-	
-	<form action="https://www.sandbox.paypal.com/cgi-bin/webscr"  method="post">
-        <!-- the cmd parameter is set to _xclick for a Buy Now button -->
-<?php
-$cusid=$_POST['cusid'];
-$total=$_POST['total'];
-$time=$_POST['time'];
-$portal=$_POST['portal'];
-$distination=$_POST['distination'];
-$transactioncode=$_POST['transactioncode'];
+	<? php
+	// Retrieve user details from session variables
+$customer_id = $_SESSION['customer_id'];
+$user_name = $_SESSION['firstname'];
+$user_email = $_SESSION['email'];
 
-if($portal=='Pick-Up'){
-$charge=0;
+/ Retrieve cart details from session variables
+if (isset($_SESSION['cart'])) {
+    $cart_items = $_SESSION['cart'];
+} else {
+    $cart_items = array();
 }
-if($portal=='Delivery'){
-$charge=50;
-}
-if($distination=='City Proper'){
-$charge1=0;
-}
-if($distination=='Outside City'){
-$charge1=50;
-}
-$totalcharge=$charge+$charge1;
-$grandtotal=$totalcharge+$total;
 ?>
-	 
-	<input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value="mamma__1330248786_biz@yahoo.com" />
-        <input type="hidden" name="item_name" value="<?php echo $cusid; ?>" />
-        <input type="hidden" name="item_number" value="<?php echo $transactioncode; ?>" />
-        <input type="hidden" name="amount" value="<?php echo $grandtotal; ?>" />
-        <input type="hidden" name="no_shipping" value="1" />
-        <input type="hidden" name="no_note" value="1" />
-        <input type="hidden" name="currency_code" value="PHP" />
-        <input type="hidden" name="lc" value="GB" />
-        <input type="hidden" name="bn" value="PP-BuyNowBF" /><br />
-		<div style="margin:0 auto; width:50px;">
-        <input type="image" src="images/button.jpg" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"  />
-        <img alt="fdff" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
-		</div>
-        <!-- Payment confirmed -->
-        <input type="hidden" name="return" value="http://mammamarias.elementfx.com/showconfirm.php" />
-        <!-- Payment cancelled -->
-        <input type="hidden" name="cancel_return" value="http://mammamarias.elementfx.com/cancel.php" />
-        <input type="hidden" name="rm" value="2" />
-        <input type="hidden" name="notify_url" value="http://mammamarias.elementfx.com/ipn.php" />
-        <input type="hidden" name="custom" value="any other custom field you want to pass" />
-    </form>
+
+<!-- Display user and cart details in a table -->
+<table>
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>Product Name</th>
+            <th>Size</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        // Initialize total cost variable
+        $total_cost = 0;
+
+        // Loop through cart items and display them in a table row
+        foreach ($cart_items as $product_id => $product_qty) {
+            // Retrieve product details from database
+            $query = "SELECT * FROM product WHERE product_id = '$product_id'";
+            $result = mysqli_query($conn, $query);
+
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+
+                $product_name = substr($row['product_name'], 0, 40);
+                $product_size = $row['product_size'];
+                $product_price = $row['product_price'];
+                $line_cost = $product_price * $product_qty;
+                $total_cost += $line_cost;
+
+                // Display cart item in a table row
+                echo "<tr>";
+                echo "<td>$customer_id</td>";
+                echo "<td>$user_name</td>";
+                echo "<td>$user_email</td>";
+                echo "<td>$product_name</td>";
+                echo "<td>$product_size</td>";
+                echo "<td>$product_qty</td>";
+                echo "<td>$product_price</td>";
+                echo "<td>$line_cost</td>";
+                echo "</tr>";
+            }
+        }
+
+        // Display total cost in a table row
+        echo "<tr>";
+        echo "<td colspan='7'>Total Cost</td>";
+        echo "<td>$total_cost</td>";
+        echo "</tr>";
+        ?>
+    </tbody>
+</table>
 	
 </div>
 </body>

@@ -1,10 +1,11 @@
 <?php
 	include('db/dbconn.php');
 	if (isset($_POST['place_order'])){
-		$cid = $_SESSION['id'];
+		$custid = $_SESSION['customerid'];
+		$id = $_SESSION['id'];
 		$total = $_POST['total'];
 		
-		include ("random_code.php");
+		include ("random_code.php");1
 		$t_id = $r_id;
 		$date = date("M d, Y");
 		$que = mysqli_query($conn, "INSERT INTO `transaction` (transaction_id, customerid, amount, order_stat, order_date) VALUES ('$t_id', '$cid', '$total', 'ON HOLD', '$date')") or die (mysqli_error());				

@@ -196,8 +196,8 @@ $paypal_id='yhannaki@gmail.com'; // Business email ID
 			<div id="foot">
 				<h4>Links</h4>
 					<ul>
-						<a href="http://www.facebook.com/wamagas"><li>Facebook</li></a>
-						<a href="http://www.twitter.com/wamagas"><li>Twitter</li></a>
+						<a href="http://www.facebook.com/duns-hub"><li>Facebook</li></a>
+						<a href="http://www.twitter.com/duns-hub"><li>Twitter</li></a>
 					</ul>
 			</div>
 	</div>

@@ -6,6 +6,7 @@
 <html>
 <head>
 	<title>Duns-hub</title>
+	<img src="../images/hubicon2.png">
 	<link rel = "stylesheet" type = "text/css" href="../css/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	<script src="../js/bootstrap.js"></script>
@@ -76,7 +77,7 @@
 							?>
 							<tr>
 								<td><input type="text" name="product_name" placeholder="Product Name" style="width:250px;" required></td>
-							<tr/>
+							</tr>
 							<tr>
 								<td><input type="text" name="product_price" placeholder="Price" style="width:250px;" required></td>
 							</tr>
@@ -179,13 +180,14 @@
 				</thead>
 				<tbody>
 				<?php
+					$query = mysqli_query($conn, "SELECT * FROM transaction LEFT JOIN customer ON customer.customerid = transaction.customerid") or die(mysqli_error($conn));
+
 					
-					$query = mysqli_query($conn, "SELECT * FROM transaction LEFT JOIN customer ON customer.customerid = transaction.customerid") or die(mysqli_error());
 					while($fetch = mysqli_fetch_array($query))
 						{
 						$id = $fetch['transaction_id'];
 						$amnt = $fetch['amount'];
-						$o_stat = $fetch['order_stat'];
+						$o_stat = $fetch['order_status'];
 						$o_date = $fetch['order_date'];
 						
 						$name = $fetch['firstname'].' '.$fetch['lastname'];
