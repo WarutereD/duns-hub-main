@@ -195,7 +195,7 @@
 						</thead>
 						  <tbody>
 							<?php 
-							$Q1 = mysqli_query($conn, "SELECT * FROM transaction WHERE order_stat = 'Confirmed'");
+							$Q1 = mysqli_query($conn, "SELECT * FROM transaction WHERE order_status = 'Confirmed'");
 							while($r1 = mysqli_fetch_array($Q1)){
 							
 							$tid = $r1['transaction_id'];
@@ -216,7 +216,7 @@
 							echo "</tr>";
 							}
 							
-							$Q3 = mysqli_query($conn, "SELECT sum(amount) FROM transaction WHERE order_stat = 'Confirmed'");
+							$Q3 = mysqli_query($conn, "SELECT sum(amount) FROM transaction WHERE order_status = 'Confirmed'");
 							while($r3 = mysqli_fetch_array($Q3)){
 							
 							$amnt = $r3['sum(amount)'];

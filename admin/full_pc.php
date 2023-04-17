@@ -94,6 +94,7 @@
 			<li><a href="customer.php">Customers</a></li>
 			<li><a href="message.php">Messages</a></li>
 			<li><a href="order.php">Orders</a></li>
+			<li><a href="receipt.php">Receipt</a></li>
 		</ul>
 	</div>
 		

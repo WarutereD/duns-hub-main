@@ -3,7 +3,7 @@
 		
 		$t_id = $_GET['id'];
 		
-		mysqli_query($conn, "UPDATE transaction SET order_stat = 'Confirmed' WHERE transaction_id = '$t_id'") or die(mysqli_error());
+		mysqli_query($conn, "UPDATE transaction SET order_status = 'Confirmed' WHERE transaction_id = '$t_id'") or die(mysqli_error());
 						
 		
 		$query2 = mysqli_query($conn, "SELECT * FROM transaction_detail LEFT JOIN product ON product.product_id = transaction_detail.product_id WHERE transaction_detail.transaction_id = '$t_id'") or die (mysql_error());

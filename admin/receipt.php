@@ -6,6 +6,7 @@
 <html>
 <head>
 	<title>Duns-hub</title>
+	<link rel="icon" href="../images/hubicon2.png" />
 	<link rel = "stylesheet" type = "text/css" href="../css/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 	<script src="../js/bootstrap.js"></script>
@@ -98,7 +99,7 @@
 							?>
 							<tr>
 								<td><input type="text" name="product_name" placeholder="Product Name" style="width:250px;" required></td>
-							<tr/>
+							</tr>
 							<tr>
 								<td><input type="text" name="product_price" placeholder="Price" style="width:250px;" required></td>
 							</tr>
@@ -172,8 +173,8 @@
 			<li><a href="admin_home.php">Products</a>
 				<ul>
 					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Full Pc</a></li>
-					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Basketball</a></li>
-					<li><a href="admin_football.php" style="font-size:15px; margin-left:15px;">Football</a></li>
+					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & pieces</a></li>
+					<li><a href="accessories.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>
 
 				</ul>
 			</li>
@@ -200,7 +201,7 @@
 		<tr>
 			<th><h5>Quantity</h5></td>
 			<th><h5>Product Name</h5></td>
-			<th><h5>Weight</h5></td>
+			<th><h5>Description</h5></td>
 			<th><h5>Price</h5></td>
 		</tr>
 		
@@ -216,14 +217,14 @@
 		while($row = mysqli_fetch_array($query2)){
 		
 		$pname = $row['product_name'];
-		$pweight = $row['product_weight'];
+		$pdesc = $row['product_description'];
 		$pprice = $row['product_price'];
 		$oqty = $row['order_qty'];
 		
 		echo "<tr>";
 		echo "<td>".$oqty."</td>";
 		echo "<td>".$pname."</td>";
-		echo "<td>".$pweight."kgs</td>";
+		echo "<td>".$pdesc."</td>";
 		echo "<td>".$pprice."</td>";
 		echo "</tr>";
 		}
