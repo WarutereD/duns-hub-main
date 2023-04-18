@@ -112,7 +112,7 @@
             	<img class="img-polaroid" style="width:400px; height:350px;" src="photo/<?php echo $row['product_image']; ?>">
             	<h2 class="text-uppercase bg-primary"><?php echo $row['product_name']?></h2>
             	<h3 class="text-uppercase">KSH: <?php echo $row['product_price']?></h3>
-            	<h3 class="text-uppercase">Description: <?php echo $row['product_size']?>!</h3>
+            	<h3 class="text-uppercase">Description: <?php echo $row['product_description']?>!</h3>
             	<a href='cart.php?id=<?php echo $id ?>&action=add' class='btn btn-inverse'>Add to Cart</a>
             	<a href='product1.php' class='btn btn-inverse'>Back</a>
         	</center>
@@ -169,7 +169,7 @@
 						<li>You are guaranteed that your product will be deliver 10-40mins upon ordering.</li>
 						<li>Guaranteed time maybe suspended depending on the weather conditions for the safety of our delivery personnel.</li>						
 						<li>Mode of payment are as follows:customers with mpesa can pay through mpesa till otherwise Cash on Delivery(COD).</li>
-						<li>Delivery is free, wamagas is not liabale for extra payment to delivery personnel .</li>
+						<li>Delivery is free, Duns-hub is not liabale for extra payment to delivery personnel .</li>
 					</ul>
 				</div>
 			<div class="modal-footer">

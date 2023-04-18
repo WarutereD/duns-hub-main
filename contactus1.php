@@ -102,7 +102,7 @@
 	</div>
 	
 	
-		<img src="img/contactus.jpg" style="width:1150px; height:100px; border:1px solid #000; ">
+		<img src="img/contactus.jpg"style="width:1150px; height:100px; border:1px solid #000; ">
 	<br />
 	<br />
 	
@@ -116,7 +116,7 @@
 						<td style="font-size:20px;">Message:</td><td><textarea name="message" style="width:400px; height:300px;" required></textarea></td>
 					</tr>
 					<tr>
-						<td></td><td><button class="btn btn-info" name="send" style="width:300px;"><i class="icon icon-ok icon-white"></i>Submit</button>&nbsp;<a href="index.php"><button class="btn btn-danger" style="width:110px;"><i class="icon icon-remove icon-white"></i>Cancel</button></a></td>
+						<td></td><td><button class="btn btn-info" name="send" style="width:300px;"><i class="icon icon-ok icon-white" onclick="alert('Message submitted successfully')"></i>Submit</button>&nbsp;<a href="index.php"><button class="btn btn-danger" style="width:110px;"><i class="icon icon-remove icon-white"></i>Cancel</button></a></td>
 					</tr>
 				</table> 
 			</form> 

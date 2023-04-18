@@ -131,7 +131,33 @@ if (!isset($_SESSION['cart'])) {
 				break;
 			case 'add':
 				$_SESSION['cart'][$id] = isset($_SESSION['cart'][$id]) ? $_SESSION['cart'][$id] + 1 : 1;
+				
 				break;
+			case 'add_':
+				$query = "SELECT qty FROM stock WHERE product_id = '$id'";
+				$result = mysqli_query($conn, $query);
+			
+				if ($result && mysqli_num_rows($result) > 0) {
+					$row = mysqli_fetch_assoc($result);
+					$quantity_available = $row['qty'];
+				
+					if (isset($_SESSION['cart'][$id])) {
+						$qty = $_SESSION['cart'][$id] + 1;
+					} else {
+						$qty = 1;
+					}
+				
+					// Check if the quantity added to the cart exceeds the quantity available in the database
+					if ($qty > $quantity_available) {
+						echo "<script>alert('The quantity you added exceeds the quantity available in the database.');</script>";
+						// You can also redirect the user to the product page or perform any other action here
+					} else {
+						$_SESSION['cart'][$id] = $qty;
+					}
+				}
+				break;
+				
+				
 			case 'remove':
 				if (isset($_SESSION['cart'][$id])) {
 					$_SESSION['cart'][$id]--;
@@ -164,9 +190,13 @@ if (!isset($_SESSION['cart'])) {
 					$price = $row['product_price'];
 					$image = $row['product_image'];
 					$product_size = $row['product_size'];
+					
+
 		
 					$line_cost = $price * $qty;
 					$total += $line_cost;
+
+					
 		
 					// Output the product information in a table row
 					echo "<tr>";
@@ -175,8 +205,8 @@ if (!isset($_SESSION['cart'])) {
 					echo "<td>".$product_size."</td>";
 					echo "<td><input type='hidden' required value='".$qty."' name='qty[]'>".$qty."</td>";
 					echo "<td>".$price."</td>";
-					echo "<td><a href='cart.php?id=".$id."&action=add'><i class='icon-plus-sign'></i></a></td>";
-					echo "<td><a href='cart.php?id=".$id."&action=remove'><i class='icon-minus-sign'></i></a></td>";
+					echo "<td><a href='cart.php?id=".$id."&action=add_'><i class='icon-plus-sign'> + </i></a></td>";
+					echo "<td><a href='cart.php?id=".$id."&action=remove'><i class='icon-minus-sign'> - </i></a></td>";
 					echo "<td><strong>P ".$line_cost."</strong></td>";
 					echo "</tr>";
 					}
@@ -205,15 +235,9 @@ if (!isset($_SESSION['cart'])) {
 				
 		<div class='pull-right'>
 		<a href='home.php' class='btn btn-inverse btn-lg'>Continue Shopping</a>
-		
-		<a href='payment.php?id=<?php echo $id ?>&action=place_order' class='btn btn-inverse btn-lg'>Proceed & Checkout</a>
-		<button name="place_order" type="submit" class="btn btn-inverse btn-lg">Purchase</button>
+		<button name="place_order" type="submit" class="btn btn-inverse btn-lg" onclick="alert('Thank you for your purchase, You will be contacted when your order is approved!')">Purchase</button>
+		<!--<?php echo '<button name="total" type="submit" class="btn btn-inverse btn-lg" >Purchase</button>';
 
-		<!--<?php echo '<button name="total" type="submit" class="btn btn-inverse btn-lg" >Purchase</button>'; 
-		
-		
-		//include ("function/paypal.php"); 
-		//include ("function/mpesa.php"); 
 		?>-->
 		</form>
 	

@@ -234,7 +234,7 @@
 
 	</table>
 	<legend></legend>
-	<h4>TOTAL: KSH: <?php echo $pprice; ?></h4>
+	<h4>TOTAL: KSH: <?php echo $pprice * $oqty; ?></h4>
 	<label style="font-size:20px;">**Thank you for shopping with Duns-hub**</label>
 	</center>
 	</div>

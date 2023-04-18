@@ -114,7 +114,7 @@
       			<h2>TheHub</h2>
 				<h3>Welcome</h3>
       			<p>The Xbox Series X delivers sensationally smooth frame rates of up to 120FPS with the visual pop of HDR. Immerse yourself with sharper characters, brighter worlds and impossible details with true-to-life 4K.*</p>
-      			<p>Price: KSH100.00</p>
+      			<p>Price: KSH100000.00</p>
     		</div>
     		<div class="item-image">
       			<img src="images/xbox.jpg" alt="Item Image">
@@ -122,9 +122,10 @@
   		 </div>
   	 	 <div class="item-wrapper">
 			<div class="item-description">
-      			<h2>Item Name 2</h2>
-      			<p>Item Description 2 goes here...</p>
-      			<p>Price: KSH20.00</p>
+      			<h2>Duns-Hub</h2>
+				  <h3>Your One Stop Shop</h3>
+      			<p>Experience lightning-fast loading with an ultra-high speed SSD, deeper immersion with support for haptic feedback1, adaptive triggers1 and 3D Audio</p>
+      			<p>Price: KSH190000.00</p>
     		</div>
     		<div class="item-image">
       			<img src="images/ps5.jpg" alt="Item Image">
@@ -132,8 +133,9 @@
   		 </div>
   		<div class="item-wrapper">
 		  <div class="item-description">
-      			<h2>Item Name 3</h2>
-      			<p>Item Description 3 goes here...</p>
+      			<h2>TheHub</h2>
+				  <h3>Every part you need, we have it</h3>
+      			<p>Accelerate your gaming with AMD EXPO™ technology. Higher memory frequencies and more aggressive settings can unlock higher and smoother frame rates in your favorite games.</p>
       			<p>Price: KSH30.00</p>
     		</div>
     		<div class="item-image">
@@ -229,7 +231,6 @@
 							echo "<br />";
 							echo "P ".$fetch['product_price']."";
 							echo "<br />";
-							echo "<h3 class='text-info' style='position:absolute; margin-top:-90px; text-indent:15px;'> Size: ".$fetch['product_size']."</h3>";
 							echo "</center>";
 							echo "</div>";
 						}

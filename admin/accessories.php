@@ -85,7 +85,7 @@
 								<td><input type="text" name="product_price" placeholder="Price" style="width:250px;" required></td>
 							</tr>
 							<tr>
-								<td><input type="text" name="product_weight" placeholder="Weight" style="width:250px;" maxLength="2" required></td>
+								<td><input type="text" name="product_description" placeholder="description" style="width:250px;"  required></td>
 							</tr>
 							<tr>
 								<td><input type="text" name="brand" placeholder="Brand Name	" style="width:250px;" required></td>
@@ -112,7 +112,7 @@
 					$product_code = $_POST['product_code'];
 					$product_name = $_POST['product_name'];
 					$product_price = $_POST['product_price'];
-					$product_weight = $_POST['product_weight'];
+					$product_description = $_POST['product_description'];
 					$brand = $_POST['brand'];
 					$category = $_POST['category'];
 					$qty = $_POST['qty'];
@@ -137,8 +137,8 @@
 										move_uploaded_file($temp,"../photo/".$name);
 			
 
-				$q1 = mysqli_query($conn, "INSERT INTO product ( product_id,product_name, product_price, product_size, product_image, brand, category)
-				VALUES ('$product_code','$product_name','$product_price','$product_size','$name', '$brand', '$category')");
+				$q1 = mysqli_query($conn, "INSERT INTO product ( product_id,product_name, product_price, product_description, product_image, brand, category)
+				VALUES ('$product_code','$product_name','$product_price','$product_description','$name', '$brand', '$category')");
 				
 				$q2 = mysqli_query($conn,"INSERT INTO stock ( product_id, qty) VALUES ('$product_code','$qty')");
 				
@@ -179,7 +179,7 @@
 					<th>Product Image</th>
 					<th>Product Name</th>
 					<th>Product Price</th>
-					<th>Product Weight</th>
+					<th>Product Description</th>
 					<th>No. of Stock</th>
 					<th>Action</th>
 				</tr>
@@ -196,7 +196,7 @@
 					<td><img class="img-polaroid" src = "../photo/<?php echo $fetch['product_image']?>" height = "70px" width = "80px"></td>
 					<td><?php echo $fetch['product_name']?></td>
 					<td><?php echo $fetch['product_price']?></td>
-					<td><?php echo $fetch['product_size']?></td>
+					<td><?php echo $fetch['product_description']?></td>
 					
 					<?php
 					$query1 = mysqli_query($conn, "SELECT * FROM `stock` WHERE product_id='$id'") or die(mysqli_error());

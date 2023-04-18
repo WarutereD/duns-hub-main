@@ -39,6 +39,6 @@
 		}
 
 		// redirect to order summary page
-		echo "<script>window.location='summary.php?tid=".$t_id."'</script>";
+		echo "<script>window.location='../product1.php'</script>";
 	}
 ?>

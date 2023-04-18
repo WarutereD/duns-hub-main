@@ -106,7 +106,7 @@
 			<ul>
 				<li><a href="product1.php">Parts & Pieces</a></li>
 				<li>|</li>
-				<li><a href="accessories.php" class="active" style="color:#111;">Accessories</a></li>
+				<li><a href="full_pc.php" class="active" style="color:#111;">Full Pc</a></li>
 				<li>|</li>				
 			</ul>
 				<a href="cart.php"><button class="btn btn-inverse" style="right:1%; position:fixed; top:10%;"><i class="icon-shopping-cart icon-white"></i> View Cart</button></a>
@@ -119,7 +119,7 @@
 			
 			<?php 
 				
-				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='accessories' ORDER BY product_id DESC") or die (mysqli_error());
+				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='accessories'") or die (mysqli_error());
 				
 					while($fetch = mysqli_fetch_array($query))
 						{
