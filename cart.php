@@ -236,9 +236,12 @@ if (!isset($_SESSION['cart'])) {
 		<div class='pull-right'>
 		<a href='home.php' class='btn btn-inverse btn-lg'>Continue Shopping</a>
 		<button name="place_order" type="submit" class="btn btn-inverse btn-lg" onclick="alert('Thank you for your purchase, You will be contacted when your order is approved!')">Purchase</button>
+		
 		<!--<?php echo '<button name="total" type="submit" class="btn btn-inverse btn-lg" >Purchase</button>';
 
 		?>-->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#purchase">Purchase mode</button>
+
 		</form>
 	
 
@@ -246,25 +249,53 @@ if (!isset($_SESSION['cart'])) {
 
 	</div>
 
-		<div id="purchase" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-				<h3 id="myModalLabel">Mode Of Payment</h3>
-			</div>
-				<div class="modal-body">
-					<form method="post">
-					<center>
-						<input type="image" src="images/button.jpg" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"  />
-						<br/>
-						<br/>
-						<button class="btn btn-lg" >Cash</button>
-					</center>
-				</div>
-			<div class="modal-footer">
-				<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
-					</form>
-			</div>
-		</div>
+	<div id="purchase" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Select Payment Method</h3>
+  </div>
+  <div class="modal-body">
+    <form method="post" action="function/place_order.php">
+      <center>
+        <label for="mpesa-reference">M-Pesa Transaction Reference:</label>
+        <input type="text" id="mpesa-reference" name="mpesa_reference" placeholder="Enter M-Pesa transaction reference">
+        <br>
+        <br>
+		
+        <button name="place_order" type="button" class="btn btn-lg btn-primary" onclick="submitMpesa()">M-Pesa</button>
+        <button name="place_order" type="button" class="btn btn-lg btn-success" onclick="submitCash()">Cash</button>
+      </center>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+<script>
+  function submitMpesa() {
+    var reference = document.getElementById("mpesa-reference").value;
+    if (reference) {
+		// Check if payment method is M-Pesa
+		if (isset($_POST['mpesa']) && $_POST['mpesa'] == "true") {
+					// Get the reference number
+					$reference = $_POST['reference'];
+					// Insert the transaction with the reference number
+					$query = mysqli_query($conn, "INSERT INTO `transaction` ( payment) VALUES ('$reference')") or die(mysqli_error($conn));
+				} else {
+					// Insert the transaction with cash on delivery payment method
+					$query = mysqli_query($conn, "INSERT INTO `transaction` (payment) VALUES ('cash on delivery')") or die(mysqli_error($conn));
+				}
+      alert("Payment received via M-Pesa with reference number " + reference);
+    } else {
+      alert("Please enter the M-Pesa transaction reference number.");
+    }
+  }
+
+  function submitCash() {
+    alert("Payment will be done after delivery.");
+  }
+</script>
+
 			
 			
 		<br />		
