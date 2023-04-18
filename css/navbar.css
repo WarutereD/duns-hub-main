@@ -1,0 +1,18 @@
+.navbar .nav-link {
+    color: white !important;
+  }
+  
+  .navbar-nav .ml-auto .nav-link {
+    padding-right: 1rem;
+  }
+ 
+  
+  
+  #container {
+    min-width: 310px;
+    height: 600px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: none;
+  }
+  

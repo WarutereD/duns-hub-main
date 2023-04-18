@@ -149,7 +149,7 @@ if (!isset($_SESSION['cart'])) {
 				
 					// Check if the quantity added to the cart exceeds the quantity available in the database
 					if ($qty > $quantity_available) {
-						echo "<script>alert('The quantity you added exceeds the quantity available in the database.');</script>";
+						echo "<script>alert('The quantity you added exceeds the quantity available in our stores.');</script>";
 						// You can also redirect the user to the product page or perform any other action here
 					} else {
 						$_SESSION['cart'][$id] = $qty;
@@ -216,7 +216,7 @@ if (!isset($_SESSION['cart'])) {
 				echo "<tr>";
 				echo "<td colspan='4'></td>";
 				echo "<td><strong>TOTAL:</strong></td>";
-				echo "<td><strong>P ".$total."</strong></td>";
+				echo "<td>><input type='hidden' required value='".$total."' name='total'><strong>P ".$total."</strong></td>";
 				echo "<td></td>";
 				echo "<td><a class='btn btn-danger btn-sm pull-right' href='cart.php?id=".$id."&action=empty'><i class='fa fa-trash-o'></i> Empty cart</a></td>";		
 				echo "</tr>";

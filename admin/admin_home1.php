@@ -1,6 +1,20 @@
 <?php
 	include("../function/session.php");
 	include("../db/dbconn.php");
+
+   
+  // Check if the user is logged in
+  if (!isset($_SESSION['id'])) {
+    header('Location: admin_index.php');
+    exit();
+  }
+
+  // If the user is logged in, retrieve the admin information
+  $id = (int) $_SESSION['id'];
+  $query = mysqli_query ($conn, "SELECT * FROM admin WHERE adminid = '$id' ") or die (mysqli_error());
+  $fetch = mysqli_fetch_array ($query);
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +26,8 @@
 	<script src="../js/bootstrap.js"></script>
 	<script src="../js/jquery-1.7.2.min.js"></script>
 	<script src="../js/carousel.js"></script>
+    <link rel="stylesheet" type="text/css" href="navbar.css">
+
 	<script src="../js/button.js"></script>
 	<script src="../js/dropdown.js"></script>
 	<script src="../js/tab.js"></script>
@@ -24,6 +40,11 @@
 	<script src="../js/transition.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../javascripts/filter.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../chart/chart.js"></script>
 	
 	
 		<script type="text/javascript" src="../chart/chart.js"></script>
@@ -101,70 +122,64 @@ $(function () {
 </head>
 <body>
 
-	<div id="header">
-		<img src="../images/hubicon2.png">
-		<label>Duns-hub</label>
-		<?php
-				$id = (int) $_SESSION['id'];
-			
-					$query = mysqli_query ($conn, "SELECT * FROM admin WHERE adminid = '$id' ") or die (mysqli_error());
-					$fetch = mysqli_fetch_array ($query);
-					
-			?>
-		<div class="nav">	
-					<ul>
-						<li class="logout"><a href="../function/admin_logout.php"><i class="icon-off icon-white"></i>logout</a></li>
-						<li class="welcome">Welcome:&nbsp;&nbsp;&nbsp;<a><i class="icon-user icon-white"></i><?php echo $fetch['username']; ?></a></li>
-					</ul>
-				</div>
-		<br>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Duns-hub</a>
+
+  <!-- Navigation items -->
+  <div style="position: absolute; right: 0;"> 
+     <ul >
+        <li class="welcome" style="color: white;">Welcome:&nbsp;&nbsp;&nbsp;<a><i class="icon-user icon-white"></i><?php echo $fetch['username']; ?></a></li>
+        <li class="logout" style="color: white;"><a href="../function/admin_logout.php"><i class="icon-off icon-white"></i>logout</a></li>
+
+    </ul>
+
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="admin_home1.php">Dashboard</a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Products
+        </a>
+        <div class="dropdown-menu" aria-labelledby="productsDropdown">
+          <a class="dropdown-item" href="full_pc1.php">Full PC</a>
+          <a class="dropdown-item" href="parts_pieces1.php">Parts &amp; Pieces</a>
+          <a class="dropdown-item" href="accessories.php">Accessories</a>
+        </div>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link" href="transaction1.php">Transaction</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="customer1.php">Customers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="message1.php">Messages</a>
+        </li>
+        
+      </ul>
+    </nav>
+    <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+        <div id="container" class="chart-container"></div>
+    
+
+    </main>
+
+  </div>
+</div>
+
+
+	
+	
+	
 		
-			
-				
-			
-			<style>
-				.navbar {
-  					display: flex;
-  					justify-content: space-between;
-  					align-items: center;
-				}
-
-				.logout {
-  					margin-left: auto;
-				}
-
-				.welcome {
-					text-align: center;
-				}
-			</style>
-	</div>
-	
-	<br>
-	
-	<div id="leftnav">
-		<ul>
-			<li><a href="admin_home.php" style="color:#333;">Dashboard</a></li>
-			<li><a href="admin_home.php">Products</a>
-				<ul>
-					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Full Pc</a></li>
-					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & pieces</a></li>
-					<li><a href="accessories.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>				
-				</ul>
-			</li>
-			<li><a href="transaction.php">Transactions</a></li>
-			<li><a href="customer.php">Customers</a></li>
-			<li><a href="message.php">Messages</a></li>
-			<li><a href="order.php">Orders</a></li>
-			
-		</ul>
-	</div>
-	<div id="rightcontent" style="position:absolute; top:10%;">
-	
-	<div id="container" style="min-width: 310px; height: 600px; max-width: 1000px; margin: 0 auto; background:none; float:left;"></div>
-
-				
-	
-	</div>
-	</div>
 </body>
 </html>

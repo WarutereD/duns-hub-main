@@ -1,7 +1,21 @@
 <?php
-	ob_start();
+  ob_start();
 	include("../function/session.php");
 	include("../db/dbconn.php");
+
+   
+  // Check if the user is logged in
+  if (!isset($_SESSION['id'])) {
+    header('Location: admin_index.php');
+    exit();
+  }
+
+  // If the user is logged in, retrieve the admin information
+  $id = (int) $_SESSION['id'];
+  $query = mysqli_query ($conn, "SELECT * FROM admin WHERE adminid = '$id' ") or die (mysqli_error());
+  $fetch = mysqli_fetch_array ($query);
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,6 +27,8 @@
 	<script src="../js/bootstrap.js"></script>
 	<script src="../js/jquery-1.7.2.min.js"></script>
 	<script src="../js/carousel.js"></script>
+    <link rel="stylesheet" type="text/css" href="navbar.css">
+
 	<script src="../js/button.js"></script>
 	<script src="../js/dropdown.js"></script>
 	<script src="../js/tab.js"></script>
@@ -25,88 +41,88 @@
 	<script src="../js/transition.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../javascripts/filter.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../jscript/jquery-1.9.1.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../chart/chart.js"></script>
 	
-		<!--Le Facebox-->
-		<link href="../facefiles/facebox.css" media="screen" rel="stylesheet" type="text/css" />
-		<script src="../facefiles/jquery-1.9.js" type="text/javascript"></script>
-		<script src="../facefiles/jquery-1.2.2.pack.js" type="text/javascript"></script>
-		<script src="../facefiles/facebox.js" type="text/javascript"></script>
-		<script type="text/javascript">
-		jQuery(document).ready(function($) {
-		$('a[rel*=facebox]').facebox() 
-		})
-		</script>
+	
+		<script type="text/javascript" src="../chart/chart.js"></script>
+
+    <!--Le Facebox-->
+    <link href="../facefiles/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+        <script src="../facefiles/jquery-1.9.js" type="text/javascript"></script>
+        <script src="../facefiles/jquery-1.2.2.pack.js" type="text/javascript"></script>
+        <script src="../facefiles/facebox.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        jQuery(document).ready(function($) {
+        $('a[rel*=facebox]').facebox() 
+        })
+        </script>
+
+		
+
 </head>
 <body>
-	<div id="header" style="position:fixed;">
-		<img src="../images/hubicon2.png">
-		<label>Duns-hub</label>
-		
-			<?php
-				$id = (int) $_SESSION['id'];
-			
-					$query = mysqli_query ($conn, "SELECT * FROM admin WHERE adminid = '$id' ") or die (mysqli_error());
-					$fetch = mysqli_fetch_array ($query);
-			?>
-				
-				<div class="nav">	
-					<ul>
-						<li class="logout"><a href="../function/admin_logout.php"><i class="icon-off icon-white"></i>logout</a></li>
-						<li class="welcome">Welcome:&nbsp;&nbsp;&nbsp;<a><i class="icon-user icon-white"></i><?php echo $fetch['username']; ?></a></li>
-					</ul>
-				</div>
-		<br>
-		
-			
-				
-			
-			<style>
-				.navbar {
-  					display: flex;
-  					justify-content: space-between;
-  					align-items: center;
-				}
 
-				.logout {
-  					margin-left: auto;
-				}
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="admin_home1.php">Duns-hub</a>
 
-				.welcome {
-					text-align: center;
-				}
-			</style>
-	
-	</div>
-	
-	<br>
-	<div id="leftnav">
-		<ul>
-			<li><a href="admin_home.php" style="color:#333;">Dashboard</a></li>
-			<li><a href="admin_home.php">Products</a>
-				<ul>
-					<li><a href="full_pc.php "style="font-size:15px; margin-left:15px;">Full Pc</a></li>
-					<li><a href="parts_pieces.php "style="font-size:15px; margin-left:15px;">Parts & pieces</a></li>
-					<li><a href="accessories.php" style="font-size:15px; margin-left:15px;">Accessories</a></li>					
-				</ul>
-			</li>
-			<li><a href="transaction.php">Transactions</a></li>
-			<li><a href="customer.php">Customers</a></li>
-			<li><a href="message.php">Messages</a></li>
-			<li><a href="order.php">Orders</a></li>
-			<li><a href="receipt.php">Receipt</a></li>
-		</ul>
-	</div>
-		
-		<a href="#add" role="button" class="btn btn-info" data-toggle="modal" style="position:absolute;margin-left:222px; margin-top:140px; z-index:-1000;"><i class="icon-plus-sign icon-white"></i>Add Product</a>
-		<div id="add" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
+  <!-- Navigation items -->
+  <div style="position: absolute; right: 0;"> 
+     <ul >
+        <li class="welcome" style="color: white;">Welcome:&nbsp;&nbsp;&nbsp;<a><i class="icon-user icon-white"></i><?php echo $fetch['username']; ?></a></li>
+        <li class="logout" style="color: white;"><a href="../function/admin_logout.php"><i class="icon-off icon-white"></i>logout</a></li>
+
+    </ul>
+
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="admin_home1.php">Dashboard</a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Products
+        </a>
+        <div class="dropdown-menu" aria-labelledby="productsDropdown">
+          <a class="dropdown-item" href="full_pc1.php">Full PC</a>
+          <a class="dropdown-item" href="parts_pieces1.php">Parts &amp; Pieces</a>
+          <a class="dropdown-item" href="accessories.php">Accessories</a>
+        </div>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link" href="transaction1.php">Transaction</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="customer1.php">Customers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="message1.php">Messages</a>
+        </li>
+       
+      </ul>
+    </nav>
+    <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+    <a href="#add" role="button" class="btn btn-info" data-toggle="modal" style="position: absolute; margin-left: 10px; margin-top: 100px; z-index: 9999;"><i class="icon-plus-sign icon-white"></i>Add Product</a>
+
+		<div id="add" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px; position:relative; margin-left:200px; margin-top:50px;">
 			<div class="modal-header">
+      <h3 id="myModalLabel">Add Product...</h3>
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-				<h3 id="myModalLabel">Add Product...</h3>
+				
 			</div>
 				<div class="modal-body">
 					<form method="post" enctype="multipart/form-data">
-					<center>
+                    <center>
 						<table>
 							<tr>
 								<td><input type="file" name="product_image" required></td>
@@ -132,7 +148,7 @@
 								<td><input type="number" name="qty" placeholder="No. of Stock" style="width:250px;" required></td>
 							</tr>
 							<tr>
-								<td><input type="hidden" name="category" value="full_pc"></td>
+								<td><input type="hidden" name="category" value="parts_pieces"></td>
 							</tr>
 						</table>
 					</center>
@@ -180,16 +196,14 @@
 				
 				$q2 = mysqli_query($conn, "INSERT INTO stock ( product_id, qty) VALUES ('$product_code','$qty')");
 				
-				exit(header ("location: full_pc.php"));
+				exit(header ("location: parts_pieces1.php"));
 				
 			}}
 		}
 
 				?>
-			
-	
-	<div id="rightcontent" style="position:absolute; top:10%;">
-			<div class="alert alert-info"><center><h2>Pc Builds & Consoles</h2></center></div>
+			<div id="container" style="position:absolute; top:10%;">
+			<div class="alert alert-info"><center><h2>Parts & Pieces</h2></center></div>
 			<br />
 				<label  style="padding:5px; float:right;"><input type="text" name="filter" placeholder="Search Product here..." id="filter"></label>
 			<br />
@@ -209,7 +223,7 @@
 				<tbody>
 				<?php
 					
-					$query = mysqli_query($conn, "SELECT * FROM `product` WHERE category='full_pc' ORDER BY product_id DESC") or die(mysqli_error());
+					$query = mysqli_query($conn, "SELECT * FROM `product` WHERE category='parts_pieces' ORDER BY product_id DESC") or die(mysqli_error());
 					while($fetch = mysqli_fetch_array($query))
 						{
 						$id = $fetch['product_id'];
@@ -249,7 +263,7 @@
   
   $pid = $_POST['pid'];
   
- $result = mysqli_query($conn, "SELECT * FROM `stock` WHERE product_id='$pid'") or die(mysqli_error());
+ $result = mysqli_query($conn, "SELECT * FROM `stock` WHERE product_id='$pid'") or die(mysql_error());
  $row = mysqli_fetch_array($result);
  
   $old_stck = $row['qty'];
@@ -258,8 +272,7 @@
  
   $que = mysqli_query($conn, "UPDATE `stock` SET `qty` = '$total' WHERE `product_id`='$pid'") or die(mysqli_error());
   
-  header("Location:full_pc.php");
-
+  header("Location:parts_pieces1.php");
  }
  
   /* stock out */
@@ -276,10 +289,19 @@
  
   $que = mysqli_query($conn, "UPDATE `stock` SET `qty` = '$total' WHERE `product_id`='$pid'") or die(mysqli_error());
   
-  header("Location:full_pc.php");
-
+  header("Location:parts_pieces1.php");
  }
   ?>				
+
+
+    </main>
+
+  </div>
+</div>
+	
+</body>
+</html>
+
 <script type="text/javascript">
 	$(document).ready( function() {
 		
@@ -297,7 +319,7 @@
 			data: ({id: id}),
 			cache: false,
 			success: function(html){
-			$(".del"+id).fadeOut(2000, function(){ $(this).remove();}); 
+			$(".del"+id).fadeOut('slow', function(){ $(this).remove();}); 
 			}
 			}); 
 			}else{
@@ -305,6 +327,4 @@
 		});				
 	});
 
-</script>	
-</body>
-</html>
+</script>
